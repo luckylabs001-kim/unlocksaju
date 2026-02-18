@@ -4,7 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UnlockSaju — Reveal Your Destiny</title>
+  <meta name="description" content="UnlockSaju: Saju (Four Pillars of Destiny) reading in multiple languages." />
+
+  <!-- SEO: canonical + hreflang (A-option: language-specific URLs) -->
+  <link rel="canonical" href="https://YOUR_DOMAIN.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://YOUR_DOMAIN.com/" />
+  <link rel="alternate" hreflang="en" href="https://YOUR_DOMAIN.com/en/" />
+  <link rel="alternate" hreflang="zh" href="https://YOUR_DOMAIN.com/zh/" />
+  <link rel="alternate" hreflang="hi" href="https://YOUR_DOMAIN.com/hi/" />
+  <link rel="alternate" hreflang="es" href="https://YOUR_DOMAIN.com/es/" />
+  <link rel="alternate" hreflang="fr" href="https://YOUR_DOMAIN.com/fr/" />
+  <link rel="alternate" hreflang="ar" href="https://YOUR_DOMAIN.com/ar/" />
+  <link rel="alternate" hreflang="pt" href="https://YOUR_DOMAIN.com/pt/" />
+  <link rel="alternate" hreflang="ru" href="https://YOUR_DOMAIN.com/ru/" />
+
+  <!-- Vercel Analytics (정적 사이트용) -->
   <script defer src="/_vercel/insights/script.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=IM+Fell+English:ital@0;1&family=Noto+Serif+KR:wght@300;400;600&display=swap"
@@ -261,12 +277,10 @@
       animation: fadeUp 0.9s 0.4s forwards;
     }
 
-    /* All spans inside h1 inherit the gradient clip by default */
     .hero h1 span {
       -webkit-text-fill-color: transparent;
     }
 
-    /* The coloured "Your / Tu / 你的" word */
     .hero h1 .hero-your {
       color: var(--red);
       -webkit-text-fill-color: var(--red);
@@ -283,7 +297,6 @@
       animation: fadeUp 0.9s 0.6s forwards;
     }
 
-    /* Trigram decorations */
     .trigrams {
       display: flex;
       gap: 28px;
@@ -321,7 +334,6 @@
       border-radius: 2px;
     }
 
-    /* Divider */
     .divider {
       display: flex;
       align-items: center;
@@ -346,7 +358,6 @@
       color: var(--gold);
     }
 
-    /* CTA button */
     .cta-btn {
       display: inline-block;
       margin-top: 40px;
@@ -563,7 +574,6 @@
       .form-card { padding: 32px 20px; }
     }
 
-    /* Field wrapper */
     .field {
       display: flex;
       flex-direction: column;
@@ -599,7 +609,6 @@
       box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
     }
 
-    /* Custom select arrow */
     .field select {
       cursor: pointer;
       appearance: none;
@@ -609,7 +618,6 @@
       padding-right: 40px;
     }
 
-    /* RTL: flip select arrow */
     [dir="rtl"] .field select {
       background-position: left 16px center;
       padding-right: 16px;
@@ -622,14 +630,12 @@
       font-style: italic;
     }
 
-    /* Date of birth row: YYYY | MM | DD */
     .dob-row {
       display: grid;
       grid-template-columns: 2fr 1.2fr 1.2fr;
       gap: 8px;
     }
 
-    /* Hide number spinners */
     .dob-row input[type="number"]::-webkit-inner-spin-button,
     .dob-row input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
@@ -640,13 +646,11 @@
       -moz-appearance: textfield;
     }
 
-    /* Relationship field */
     .relation-wrap {
       display: flex;
       flex-direction: column;
     }
 
-    /* Gender toggle */
     .gender-row {
       display: flex;
     }
@@ -674,7 +678,6 @@
       border-color: var(--ink);
     }
 
-    /* Validation error state */
     .field input.input-error,
     .field select.input-error {
       border-color: var(--red);
@@ -694,7 +697,6 @@
       display: block;
     }
 
-    /* Submit area */
     .submit-wrap {
       text-align: center;
       margin-top: 12px;
@@ -730,7 +732,6 @@
     .submit-btn:hover:not(:disabled)         { transform: translateY(-2px); }
     .submit-btn span                          { position: relative; z-index: 1; }
 
-    /* Disabled / loading state */
     .submit-btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
@@ -741,40 +742,6 @@
       font-size: 0.78rem;
       color: #9a8a70;
       font-style: italic;
-    }
-
-    /* ─────────────────────────────────────────
-       LOADING OVERLAY
-    ───────────────────────────────────────── */
-    #loading {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: rgba(13, 10, 7, 0.92);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    #loading.show { display: flex; }
-
-    .loading-circle {
-      width: 60px;
-      height: 60px;
-      border: 2px solid rgba(184, 134, 11, 0.2);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 1.2s linear infinite;
-    }
-
-    #loading p {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
     }
 
     /* ─────────────────────────────────────────
@@ -796,14 +763,13 @@
     .result-card {
       background: var(--paper);
       border: 1px solid rgba(184, 134, 11, 0.4);
-      max-width: 480px;
+      max-width: 520px;
       width: 100%;
       padding: 48px 40px;
       text-align: center;
       position: relative;
     }
 
-    /* Corner accents */
     .result-card::before,
     .result-card::after {
       content: '';
@@ -815,25 +781,46 @@
       border-width: 0;
     }
 
-    .result-card::before { top: 12px;    left: 12px;   border-top-width: 1px;    border-left-width: 1px;   }
-    .result-card::after  { bottom: 12px; right: 12px;  border-bottom-width: 1px; border-right-width: 1px;  }
+    .result-card::before { top: 12px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
+    .result-card::after  { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
 
     .result-card h3 {
       font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       color: var(--gold);
       margin-bottom: 16px;
     }
 
     .result-card p {
       font-style: italic;
-      line-height: 1.8;
+      line-height: 1.85;
       color: #3a2f20;
-      font-size: 0.97rem;
+      font-size: 0.98rem;
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 10px 14px;
+      border: 1px solid rgba(184, 134, 11, 0.35);
+      background: rgba(184, 134, 11, 0.08);
+      color: #6a5b43;
+      font-size: 0.82rem;
+      border-radius: 2px;
+    }
+
+    .result-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
     }
 
     .result-close {
-      margin-top: 28px;
+      margin-top: 26px;
       padding: 12px 36px;
       font-family: 'Cinzel', serif;
       font-size: 0.78rem;
@@ -867,10 +854,6 @@
       to   { opacity: 1; transform: translateY(0);    }
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
       25%       { transform: translateX(-6px); }
@@ -880,9 +863,6 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       LANGUAGE BAR
-  ═══════════════════════════════════════ -->
   <div class="lang-bar">
     <button class="lang-btn" id="lang-btn" onclick="toggleLang()">
       <span id="lang-label" data-i18n="langLabel">English</span>
@@ -890,7 +870,6 @@
     </button>
   </div>
 
-  <!-- Language grid popup -->
   <div class="lang-popup-overlay" id="lang-overlay" onclick="closeLangOnOverlay(event)">
     <div class="lang-popup">
       <div class="lang-popup-title" data-i18n="popupTitle">Select Language</div>
@@ -949,9 +928,6 @@
 
   <div class="top-strip"></div>
 
-  <!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
   <section class="hero">
     <div class="hero-circle"></div>
 
@@ -998,9 +974,6 @@
     </button>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       FEATURE STRIP
-  ═══════════════════════════════════════ -->
   <div class="features">
     <div class="feature">
       <div class="feature-icon">🔥</div>
@@ -1024,9 +997,6 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       SAJU EXPLANATION
-  ═══════════════════════════════════════ -->
   <section class="explanation">
     <div class="expl-inner">
       <div class="expl-heading">
@@ -1081,9 +1051,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       FORM
-  ═══════════════════════════════════════ -->
   <section id="form-section">
     <div class="form-header">
       <h2 data-i18n="formTitle">Enter Your Birth Information</h2>
@@ -1096,7 +1063,6 @@
     <div class="form-card">
       <form id="saju-form" onsubmit="handleSubmit(event)" novalidate>
 
-        <!-- Name -->
         <div class="field">
           <label for="field-name" data-i18n="labelName">Name</label>
           <input
@@ -1109,7 +1075,6 @@
           <p class="field-error" id="error-name" data-i18n="errorName">Please enter your name.</p>
         </div>
 
-        <!-- Relationship -->
         <div class="field">
           <label for="field-relation" data-i18n="labelRelation">Relationship</label>
           <div class="relation-wrap">
@@ -1132,7 +1097,6 @@
           </div>
         </div>
 
-        <!-- Date of Birth: YYYY / MM / DD -->
         <div class="field">
           <label data-i18n="labelDob">Date of Birth</label>
           <div class="dob-row">
@@ -1173,7 +1137,6 @@
           <p class="field-error" id="error-dob" data-i18n="errorDob">Please enter a valid date (YYYY / MM / DD).</p>
         </div>
 
-        <!-- Birth Hour -->
         <div class="field">
           <label for="birth-hour" data-i18n="labelHour">
             Birth Hour
@@ -1196,7 +1159,6 @@
           </select>
         </div>
 
-        <!-- Gender -->
         <div class="field">
           <label data-i18n="labelGender">Gender</label>
           <div class="gender-row">
@@ -1213,7 +1175,7 @@
               class="gender-btn"
               id="btn-female"
               data-gender="female"
-              data-i18n="genderMale"
+              data-i18n="genderFemale"
               onclick="setGender(this)"
             >Female</button>
           </div>
@@ -1221,7 +1183,6 @@
           <p class="field-error" id="error-gender" data-i18n="genderError">Please select your gender.</p>
         </div>
 
-        <!-- Submit -->
         <div class="submit-wrap">
           <button type="submit" class="submit-btn" id="submit-btn">
             <span data-i18n="submitBtn">Unlock My Saju</span>
@@ -1239,678 +1200,103 @@
     <p data-i18n="footer">© 2026 UnlockSaju · Ancient wisdom, modern insight</p>
   </footer>
 
-  <!-- Loading overlay -->
-  <div id="loading">
-    <div class="loading-circle"></div>
-    <p data-i18n="loadingText">Reading the pillars…</p>
-  </div>
-
   <!-- Result overlay -->
   <div id="result">
     <div class="result-card">
-      <h3 data-i18n="resultTitle">Your Destiny Awaits</h3>
+      <h3 data-i18n="resultTitle">Service Under Maintenance</h3>
       <p data-i18n="resultBody">
-        Your birth chart has been received. A full Saju reading — covering your five elements,
-        dominant energy, and the fortune currents of 2026 — is being prepared for you.
+        We’re currently preparing the reading engine. Please check back soon.
       </p>
-      <p style="margin-top: 14px; color: var(--gold-light); font-size: 0.85rem;" data-i18n="resultSoon">
-        (Full reading feature coming soon)
-      </p>
+
+      <div class="result-badge">
+        <span class="dot"></span>
+        <span data-i18n="resultBadge">Maintenance in progress</span>
+      </div>
+
       <button class="result-close" onclick="closeResult()" data-i18n="resultClose">Close</button>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════ -->
   <script>
-
-    /* ─────────────────────────────────────────
-       TRANSLATION DATA
-       Keys match data-i18n attribute values.
-       Placeholders use data-i18n-placeholder.
-    ───────────────────────────────────────── */
-    const TRANSLATIONS = {
-
-      en: {
-        dir: 'ltr',
-        langLabel:  'English',
-        popupTitle: 'Select Language',
-
-        heroTagline: '사주팔자 · The Four Pillars of Destiny',
-        heroUnlock:  'Unlock',
-        heroYour:    'Your',
-        heroFate:    'Fate',
-        heroSub:     'Born at a precise moment in time, your destiny is written across eight characters — heaven and earth intertwined. Let us reveal what the cosmos inscribed at the hour of your birth.',
-        ctaBtn:      'Reveal My Destiny',
-
-        feat1Title: 'Five Elements',  feat1Desc: 'Discover the balance of Wood, Fire, Earth, Metal & Water within your chart.',
-        feat2Title: 'Life Cycles',    feat2Desc: 'Understand the ten-year luck pillars that shape each chapter of your life.',
-        feat3Title: '2026 Fortune',   feat3Desc: 'See what the Year of the Horse holds in store specifically for you.',
-        feat4Title: 'Relationships',  feat4Desc: "Uncover your ideal partner's energy and compatibility through your pillars.",
-
-        explSubtitle: 'What is Saju?',
-        explTitle:    'The Four Pillars of Destiny',
-        explP1: 'Saju (사주), literally meaning "four pillars," is a millennia-old Korean and East Asian system of destiny analysis. At the moment of your birth, the cosmos aligned in a precise configuration — the year, month, day, and hour each produce a pillar composed of a Heavenly Stem and an Earthly Branch. Together, these eight characters, known as Paljja (팔자), form the blueprint of your nature, your struggles, your gifts, and the rhythms of your life.',
-        explP2: 'Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay of the Ten Heavenly Stems and the Twelve Earthly Branches — encoding the Five Elements (Wood, Fire, Earth, Metal, Water) and the cyclical energies of Yin and Yang into a living map of time.',
-        explP3: 'A skilled reading reveals far more than personality. It illuminates your dominant element and what it means for health and temperament; your ten-year luck pillars (대운, Daewoon) — the great tidal currents that shape each chapter of life; your annual fortune (세운, Sewoon) for navigating the current year; and the energetic signature of your ideal relationships and career paths.',
-
-        p1t: 'Year Pillar',  p1d: 'Ancestral energy, early life, and the face you show the world.',
-        p2t: 'Month Pillar', p2d: 'Parents, career path, and the energy of your prime adult years.',
-        p3t: 'Day Pillar',   p3d: 'Your core self — the Day Master that governs your entire chart.',
-        p4t: 'Hour Pillar',  p4d: 'Inner desires, children, and the energy of your later years.',
-
-        formTitle:    'Enter Your Birth Information',
-        formSubtitle: 'Saju requires the exact date and, ideally, the hour of your birth — the four pillars that form the map of your fate.',
-
-        labelName:          'Name',
-        placeholderName:    'First and last name',
-        errorName:          'Please enter your name.',
-
-        labelRelation:       'Relationship',
-        rel_self:            'Self',
-        rel_spouse:          'Spouse',
-        rel_partner:         'Partner',
-        rel_parent:          'Parent',
-        rel_child:           'Child',
-        rel_friend:          'Friend',
-        rel_other:           'Enter directly',
-        relCustomPlaceholder:'Enter relationship',
-
-        labelDob:  'Date of Birth',
-        dobYear:   'YYYY',
-        dobMonth:  'MM',
-        dobDay:    'DD',
-        errorDob:  'Please enter a valid date (YYYY / MM / DD).',
-
-        labelHour:   'Birth Hour',
-        hourOpt:     '(optional but recommended)',
-        hourUnknown: 'Unknown',
-
-        labelGender:  'Gender',
-        genderMale:   'Male',
-        genderFemale: 'Female',
-        genderError:  'Please select your gender.',
-
-        submitBtn:   'Unlock My Saju',
-        privacyNote: 'We never store or share your personal information.',
-
-        footer:      '© 2026 UnlockSaju · Ancient wisdom, modern insight',
-        loadingText: 'Reading the pillars…',
-
-        resultTitle: 'Your Destiny Awaits',
-        resultBody:  'Your birth chart has been received. A full Saju reading — covering your five elements, dominant energy, and the fortune currents of 2026 — is being prepared for you.',
-        resultSoon:  '(Full reading feature coming soon)',
-        resultClose: 'Close',
-      },
-
-      zh: {
-        dir: 'ltr',
-        langLabel:  '中文 (简体)',
-        popupTitle: '选择语言',
-
-        heroTagline: '사주팔자 · 四柱命理',
-        heroUnlock:  '解锁',
-        heroYour:    '你的',
-        heroFate:    '命运',
-        heroSub:     '你诞生于一个精确的时刻，命运书写在八个字之中——天地交织。让我们揭示宇宙在你出生那一刻所铭刻的一切。',
-        ctaBtn:      '揭示我的命运',
-
-        feat1Title: '五行',    feat1Desc: '探索你命盘中木、火、土、金、水的平衡关系。',
-        feat2Title: '人生周期', feat2Desc: '了解塑造你生命每个篇章的十年大运。',
-        feat3Title: '2026年运', feat3Desc: '看看马年究竟为你准备了什么。',
-        feat4Title: '感情关系', feat4Desc: '通过你的四柱揭示理想伴侣的能量与契合度。',
-
-        explSubtitle: '什么是四柱？',
-        explTitle:    '四柱命理',
-        explP1: '四柱，字面意思为"四根支柱"，是一套已有数千年历史的韩国及东亚命运分析体系。在你出生的那一刻，宇宙以精确的排列对齐——年、月、日、时各产生一根由天干和地支组成的柱。这八个字，即"八字"，构成了你的性格、挣扎、天赋以及人生节奏的蓝图。',
-        explP2: '与强调行星位置的西方占星不同，四柱命理源自十天干与十二地支的相互作用——将五行（木、火、土、金、水）和阴阳的循环能量编织成一幅活生生的时间地图。',
-        explP3: '精准的解读远不止于性格分析。它揭示你的主导五行及其对健康与气质的影响；你的大运——塑造人生每个阶段的宏观潮流；以及帮助你驾驭当前年份的流年运势，还有你理想关系与职业道路的能量印记。',
-
-        p1t: '年柱', p1d: '祖先能量、童年早期以及你向世界展示的面貌。',
-        p2t: '月柱', p2d: '父母、职业方向以及壮年时期的能量。',
-        p3t: '日柱', p3d: '你的核心自我——主宰整个命盘的日主。',
-        p4t: '时柱', p4d: '内心欲望、子女以及晚年的能量。',
-
-        formTitle:    '输入你的出生信息',
-        formSubtitle: '四柱命理需要你准确的出生日期，以及出生时辰——构成命运地图的四根支柱。',
-
-        labelName:           '姓名',
-        placeholderName:     '请输入姓名',
-        errorName:           '请输入姓名。',
-
-        labelRelation:       '关系',
-        rel_self:            '本人',
-        rel_spouse:          '配偶',
-        rel_partner:         '恋人',
-        rel_parent:          '父母',
-        rel_child:           '子女',
-        rel_friend:          '朋友',
-        rel_other:           '直接输入',
-        relCustomPlaceholder:'请输入关系',
-
-        labelDob:  '出生日期',
-        dobYear:   '年',
-        dobMonth:  '月',
-        dobDay:    '日',
-        errorDob:  '请输入有效日期（年 / 月 / 日）。',
-
-        labelHour:   '出生时辰',
-        hourOpt:     '（可选，建议填写）',
-        hourUnknown: '不知道',
-
-        labelGender:  '性别',
-        genderMale:   '男',
-        genderFemale: '女',
-        genderError:  '请选择性别。',
-
-        submitBtn:   '解锁我的四柱',
-        privacyNote: '我们不会存储或分享你的个人信息。',
-
-        footer:      '© 2026 UnlockSaju · 古老智慧，现代洞见',
-        loadingText: '正在解读四柱……',
-
-        resultTitle: '你的命运即将揭晓',
-        resultBody:  '你的命盘已收到。涵盖五行、主导能量以及2026年运势的完整四柱解读正在为你准备中。',
-        resultSoon:  '（完整解读功能即将上线）',
-        resultClose: '关闭',
-      },
-
-      hi: {
-        dir: 'ltr',
-        langLabel:  'हिन्दी',
-        popupTitle: 'भाषा चुनें',
-
-        heroTagline: '사주팔자 · भाग्य के चार स्तंभ',
-        heroUnlock:  'उजागर करें',
-        heroYour:    'आपका',
-        heroFate:    'भाग्य',
-        heroSub:     'एक सटीक पल में जन्मे, आपका भाग्य आठ अक्षरों में लिखा है — स्वर्ग और पृथ्वी का संगम। आइए जानें कि ब्रह्मांड ने आपके जन्म के क्षण में क्या अंकित किया।',
-        ctaBtn:      'मेरा भाग्य प्रकट करें',
-
-        feat1Title: 'पाँच तत्व',  feat1Desc: 'अपने चार्ट में लकड़ी, अग्नि, पृथ्वी, धातु और जल के संतुलन को खोजें।',
-        feat2Title: 'जीवन चक्र',  feat2Desc: 'उन दस-वर्षीय भाग्य स्तंभों को समझें जो आपके जीवन के हर अध्याय को आकार देते हैं।',
-        feat3Title: '2026 का भाग्य', feat3Desc: 'देखें कि घोड़े का वर्ष आपके लिए क्या लेकर आया है।',
-        feat4Title: 'रिश्ते',      feat4Desc: 'अपने चार स्तंभों के माध्यम से आदर्श साथी की ऊर्जा और अनुकूलता को उजागर करें।',
-
-        explSubtitle: 'साजू क्या है?',
-        explTitle:    'भाग्य के चार स्तंभ',
-        explP1: 'साजू (사주), जिसका शाब्दिक अर्थ है "चार स्तंभ," एक हजारों साल पुरानी कोरियाई और पूर्वी एशियाई भाग्य विश्लेषण प्रणाली है। जन्म के क्षण में, ब्रह्मांड एक सटीक संरचना में संरेखित था — वर्ष, माह, दिन और घंटा प्रत्येक एक स्वर्गीय तना और एक सांसारिक शाखा से मिलकर एक स्तंभ बनाते हैं। ये आठ अक्षर, जिन्हें पलजा (팔자) कहा जाता है, आपके स्वभाव, संघर्षों, प्रतिभाओं और जीवन की लय का खाका बनाते हैं।',
-        explP2: 'पश्चिमी ज्योतिष के विपरीत, साजू दस स्वर्गीय तनों और बारह सांसारिक शाखाओं की परस्पर क्रिया से उत्पन्न होता है — पाँच तत्वों और यिन-यांग की चक्रीय ऊर्जाओं को समय के एक जीवंत मानचित्र में संकूचित करते हुए।',
-        explP3: 'एक कुशल पाठन व्यक्तित्व से बहुत अधिक प्रकट करता है। यह आपके प्रमुख तत्व, दस-वर्षीय भाग्य स्तंभ, वार्षिक किस्मत और आदर्श रिश्तों की ऊर्जा को उजागर करता है।',
-
-        p1t: 'वर्ष स्तंभ', p1d: 'पैतृक ऊर्जा, प्रारंभिक जीवन और वह चेहरा जो आप दुनिया को दिखाते हैं।',
-        p2t: 'माह स्तंभ',  p2d: 'माता-पिता, करियर पथ और प्रमुख वयस्क वर्षों की ऊर्जा।',
-        p3t: 'दिन स्तंभ',  p3d: 'आपका मूल स्व — दिन का स्वामी जो पूरे चार्ट को नियंत्रित करता है।',
-        p4t: 'घंटा स्तंभ', p4d: 'आंतरिक इच्छाएँ, बच्चे और बाद के वर्षों की ऊर्जा।',
-
-        formTitle:    'अपनी जन्म जानकारी दर्ज करें',
-        formSubtitle: 'साजू के लिए आपकी सटीक जन्म तिथि और जन्म का समय आवश्यक है।',
-
-        labelName:           'नाम',
-        placeholderName:     'पूरा नाम दर्ज करें',
-        errorName:           'कृपया अपना नाम दर्ज करें।',
-
-        labelRelation:       'संबंध',
-        rel_self:            'स्वयं',
-        rel_spouse:          'जीवनसाथी',
-        rel_partner:         'साथी',
-        rel_parent:          'माता-पिता',
-        rel_child:           'बच्चा',
-        rel_friend:          'मित्र',
-        rel_other:           'सीधे दर्ज करें',
-        relCustomPlaceholder:'संबंध दर्ज करें',
-
-        labelDob:  'जन्म तिथि',
-        dobYear:   'वर्ष',
-        dobMonth:  'माह',
-        dobDay:    'दिन',
-        errorDob:  'कृपया वैध तिथि दर्ज करें।',
-
-        labelHour:   'जन्म समय',
-        hourOpt:     '(वैकल्पिक, अनुशंसित)',
-        hourUnknown: 'अज्ञात',
-
-        labelGender:  'लिंग',
-        genderMale:   'पुरुष',
-        genderFemale: 'महिला',
-        genderError:  'कृपया अपना लिंग चुनें।',
-
-        submitBtn:   'मेरा साजू अनलॉक करें',
-        privacyNote: 'हम आपकी व्यक्तिगत जानकारी कभी संग्रहीत या साझा नहीं करते।',
-
-        footer:      '© 2026 UnlockSaju · प्राचीन ज्ञान, आधुनिक अंतर्दृष्टि',
-        loadingText: 'स्तंभ पढ़े जा रहे हैं…',
-
-        resultTitle: 'आपका भाग्य प्रतीक्षा में है',
-        resultBody:  'आपका जन्म चार्ट प्राप्त हो गया है। 2026 के भाग्य प्रवाह को कवर करने वाला पूर्ण साजू पाठन तैयार किया जा रहा है।',
-        resultSoon:  '(पूर्ण पाठन सुविधा शीघ्र आ रही है)',
-        resultClose: 'बंद करें',
-      },
-
-      es: {
-        dir: 'ltr',
-        langLabel:  'Español',
-        popupTitle: 'Seleccionar idioma',
-
-        heroTagline: '사주팔자 · Los Cuatro Pilares del Destino',
-        heroUnlock:  'Descubre',
-        heroYour:    'Tu',
-        heroFate:    'Destino',
-        heroSub:     'Nacido en un momento preciso, tu destino está escrito en ocho caracteres — cielo y tierra entrelazados. Permítenos revelar lo que el cosmos inscribió en la hora de tu nacimiento.',
-        ctaBtn:      'Revelar Mi Destino',
-
-        feat1Title: 'Cinco Elementos', feat1Desc: 'Descubre el equilibrio de Madera, Fuego, Tierra, Metal y Agua en tu carta.',
-        feat2Title: 'Ciclos de Vida',  feat2Desc: 'Comprende los pilares de suerte de diez años que moldean cada capítulo de tu vida.',
-        feat3Title: 'Fortuna 2026',    feat3Desc: 'Descubre lo que el Año del Caballo tiene reservado específicamente para ti.',
-        feat4Title: 'Relaciones',      feat4Desc: 'Desvela la energía de tu pareja ideal y su compatibilidad a través de tus pilares.',
-
-        explSubtitle: '¿Qué es el Saju?',
-        explTitle:    'Los Cuatro Pilares del Destino',
-        explP1: 'Saju (사주), que significa literalmente "cuatro pilares", es un sistema milenario coreano y del este asiático de análisis del destino. En el momento de tu nacimiento, el cosmos se alineó en una configuración precisa — el año, el mes, el día y la hora producen cada uno un pilar compuesto por un Tronco Celestial y una Rama Terrestre. Estos ocho caracteres, conocidos como Paljja (팔자), forman el plano de tu naturaleza, tus luchas, tus dones y los ritmos de tu vida.',
-        explP2: 'A diferencia de la astrología occidental, el Saju se nutre de la interacción de los Diez Troncos Celestiales y las Doce Ramas Terrestres — codificando los Cinco Elementos y las energías cíclicas del Yin y el Yang en un mapa vivo del tiempo.',
-        explP3: 'Una lectura experta revela mucho más que la personalidad. Ilumina tu elemento dominante, tus pilares de suerte decenales, tu fortuna anual y la firma energética de tus relaciones e itinerario profesional ideal.',
-
-        p1t: 'Pilar del Año',  p1d: 'Energía ancestral, vida temprana y el rostro que muestras al mundo.',
-        p2t: 'Pilar del Mes',  p2d: 'Padres, trayectoria profesional y la energía de tus mejores años adultos.',
-        p3t: 'Pilar del Día',  p3d: 'Tu ser esencial — el Maestro del Día que rige toda tu carta.',
-        p4t: 'Pilar de la Hora', p4d: 'Deseos internos, hijos y la energía de tus últimos años.',
-
-        formTitle:    'Ingresa tu información de nacimiento',
-        formSubtitle: 'El Saju requiere la fecha exacta y, idealmente, la hora de tu nacimiento.',
-
-        labelName:           'Nombre',
-        placeholderName:     'Nombre y apellido',
-        errorName:           'Por favor, ingresa tu nombre.',
-
-        labelRelation:       'Relación',
-        rel_self:            'Yo mismo',
-        rel_spouse:          'Cónyuge',
-        rel_partner:         'Pareja',
-        rel_parent:          'Padre/Madre',
-        rel_child:           'Hijo/a',
-        rel_friend:          'Amigo/a',
-        rel_other:           'Ingresar directamente',
-        relCustomPlaceholder:'Ingresar relación',
-
-        labelDob:  'Fecha de nacimiento',
-        dobYear:   'AAAA',
-        dobMonth:  'MM',
-        dobDay:    'DD',
-        errorDob:  'Por favor, ingresa una fecha válida (AAAA / MM / DD).',
-
-        labelHour:   'Hora de nacimiento',
-        hourOpt:     '(opcional pero recomendada)',
-        hourUnknown: 'Desconocida',
-
-        labelGender:  'Género',
-        genderMale:   'Masculino',
-        genderFemale: 'Femenino',
-        genderError:  'Por favor, selecciona tu género.',
-
-        submitBtn:   'Desbloquear Mi Saju',
-        privacyNote: 'Nunca almacenamos ni compartimos tu información personal.',
-
-        footer:      '© 2026 UnlockSaju · Sabiduría ancestral, visión moderna',
-        loadingText: 'Leyendo los pilares…',
-
-        resultTitle: 'Tu destino te aguarda',
-        resultBody:  'Tu carta natal ha sido recibida. Se está preparando una lectura completa del Saju que cubre tus cinco elementos, energía dominante y las corrientes de fortuna de 2026.',
-        resultSoon:  '(Función de lectura completa próximamente)',
-        resultClose: 'Cerrar',
-      },
-
-      fr: {
-        dir: 'ltr',
-        langLabel:  'Français',
-        popupTitle: 'Choisir la langue',
-
-        heroTagline: '사주팔자 · Les Quatre Piliers du Destin',
-        heroUnlock:  'Révélez',
-        heroYour:    'Votre',
-        heroFate:    'Destin',
-        heroSub:     "Né à un instant précis, votre destin est inscrit en huit caractères — ciel et terre entrelacés. Laissez-nous révéler ce que le cosmos a gravé à l'heure de votre naissance.",
-        ctaBtn:      'Révéler Mon Destin',
-
-        feat1Title: 'Cinq Éléments', feat1Desc: "Découvrez l'équilibre du Bois, du Feu, de la Terre, du Métal et de l'Eau dans votre thème.",
-        feat2Title: 'Cycles de Vie', feat2Desc: 'Comprenez les piliers de chance décennaux qui façonnent chaque chapitre de votre vie.',
-        feat3Title: 'Fortune 2026',  feat3Desc: "Découvrez ce que l'Année du Cheval vous réserve.",
-        feat4Title: 'Relations',     feat4Desc: "Révélez l'énergie de votre partenaire idéal et votre compatibilité à travers vos piliers.",
-
-        explSubtitle: "Qu'est-ce que le Saju ?",
-        explTitle:    'Les Quatre Piliers du Destin',
-        explP1: "Le Saju (사주), qui signifie littéralement « quatre piliers », est un système millénaire coréen et est-asiatique d'analyse du destin. Au moment de votre naissance, le cosmos s'est aligné dans une configuration précise — l'année, le mois, le jour et l'heure produisent chacun un pilier composé d'une Tige Céleste et d'une Branche Terrestre. Ces huit caractères, connus sous le nom de Paljja (팔자), constituent le plan de votre nature, de vos épreuves, de vos dons et des rythmes de votre vie.",
-        explP2: "Contrairement à l'astrologie occidentale, le Saju puise dans l'interaction des Dix Tiges Célestes et des Douze Branches Terrestres — encodant les Cinq Éléments et les énergies cycliques du Yin et du Yang dans une carte vivante du temps.",
-        explP3: "Une lecture habile révèle bien plus que la personnalité. Elle éclaire votre élément dominant, vos piliers de chance décennaux, votre fortune annuelle et la signature énergétique de vos relations et parcours professionnels idéaux.",
-
-        p1t: "Pilier de l'Année", p1d: 'Énergie ancestrale, petite enfance et le visage que vous montrez au monde.',
-        p2t: 'Pilier du Mois',   p2d: 'Parents, trajectoire professionnelle et énergie de vos meilleures années adultes.',
-        p3t: 'Pilier du Jour',   p3d: "Votre être profond — le Maître du Jour qui régit l'ensemble de votre thème.",
-        p4t: "Pilier de l'Heure", p4d: 'Désirs intérieurs, enfants et énergie de vos dernières années.',
-
-        formTitle:    'Entrez vos informations de naissance',
-        formSubtitle: "Le Saju requiert la date exacte et, idéalement, l'heure de votre naissance.",
-
-        labelName:           'Nom',
-        placeholderName:     'Prénom et nom de famille',
-        errorName:           'Veuillez entrer votre nom.',
-
-        labelRelation:       'Relation',
-        rel_self:            'Moi-même',
-        rel_spouse:          'Conjoint(e)',
-        rel_partner:         'Partenaire',
-        rel_parent:          'Parent',
-        rel_child:           'Enfant',
-        rel_friend:          'Ami(e)',
-        rel_other:           'Saisir directement',
-        relCustomPlaceholder:'Saisir la relation',
-
-        labelDob:  'Date de naissance',
-        dobYear:   'AAAA',
-        dobMonth:  'MM',
-        dobDay:    'JJ',
-        errorDob:  'Veuillez entrer une date valide (AAAA / MM / JJ).',
-
-        labelHour:   'Heure de naissance',
-        hourOpt:     '(facultatif mais recommandé)',
-        hourUnknown: 'Inconnue',
-
-        labelGender:  'Genre',
-        genderMale:   'Masculin',
-        genderFemale: 'Féminin',
-        genderError:  'Veuillez sélectionner votre genre.',
-
-        submitBtn:   'Déverrouiller Mon Saju',
-        privacyNote: 'Nous ne stockons ni ne partageons jamais vos informations personnelles.',
-
-        footer:      '© 2026 UnlockSaju · Sagesse ancienne, perspicacité moderne',
-        loadingText: 'Lecture des piliers…',
-
-        resultTitle: 'Votre destin vous attend',
-        resultBody:  'Votre thème natal a bien été reçu. Une lecture complète du Saju couvrant vos cinq éléments, votre énergie dominante et les courants de fortune de 2026 est en cours de préparation.',
-        resultSoon:  '(Fonctionnalité de lecture complète bientôt disponible)',
-        resultClose: 'Fermer',
-      },
-
-      ar: {
-        dir: 'rtl',
-        langLabel:  'العربية',
-        popupTitle: 'اختر اللغة',
-
-        heroTagline: '사주팔자 · الأعمدة الأربعة للقدر',
-        heroUnlock:  'اكشف',
-        heroYour:    'عن',
-        heroFate:    'قدرك',
-        heroSub:     'وُلدتَ في لحظة دقيقة، وقدرك مكتوب في ثمانية أحرف — السماء والأرض متشابكتان. دعنا نكشف ما نقشه الكون في ساعة ميلادك.',
-        ctaBtn:      'اكشف عن قدري',
-
-        feat1Title: 'العناصر الخمسة', feat1Desc: 'اكتشف توازن الخشب والنار والأرض والمعدن والماء في مخططك.',
-        feat2Title: 'دورات الحياة',   feat2Desc: 'افهم أعمدة الحظ العشرية التي تشكّل كل فصل من فصول حياتك.',
-        feat3Title: 'حظ 2026',        feat3Desc: 'اكتشف ما يخبئه عام الحصان لك تحديداً.',
-        feat4Title: 'العلاقات',       feat4Desc: 'اكشف عن طاقة شريكك المثالي وتوافقكما من خلال أعمدتك.',
-
-        explSubtitle: 'ما هو الساجو؟',
-        explTitle:    'الأعمدة الأربعة للقدر',
-        explP1: 'الساجو (사주)، الذي يعني حرفياً "أربعة أعمدة"، هو نظام كوري وشرق آسيوي عمره آلاف السنين لتحليل المصير. في لحظة ولادتك، انتظم الكون في تشكيل دقيق — السنة والشهر واليوم والساعة تنتج كلٌّ منها عموداً مؤلفاً من ساق سماوية وفرع أرضي. هذه الأحرف الثمانية، المعروفة بـ بالجا (팔자)، تُشكّل مخطط طبيعتك وصراعاتك ومواهبك وإيقاعات حياتك.',
-        explP2: 'على عكس علم التنجيم الغربي، يستمد الساجو طاقته من تفاعل العشرة سيقان السماوية والاثني عشر فرعاً أرضياً — مُضمِّناً العناصر الخمسة وطاقات الين واليانغ في خريطة حية للزمن.',
-        explP3: 'تكشف القراءة الماهرة عن أكثر بكثير من الشخصية. فهي تُنير عنصرك السائد، وأعمدة حظك العشرية، وحظك السنوي، والبصمة الطاقية لعلاقاتك ومساراتك المهنية المثالية.',
-
-        p1t: 'عمود السنة',  p1d: 'الطاقة السلفية والحياة المبكرة والوجه الذي تُظهره للعالم.',
-        p2t: 'عمود الشهر',  p2d: 'الوالدان والمسار المهني وطاقة سنوات شبابك.',
-        p3t: 'عمود اليوم',  p3d: 'جوهر ذاتك — سيد اليوم الذي يتحكم في مخططك بالكامل.',
-        p4t: 'عمود الساعة', p4d: 'الرغبات الداخلية والأبناء وطاقة سنواتك اللاحقة.',
-
-        formTitle:    'أدخل معلومات ميلادك',
-        formSubtitle: 'يتطلب الساجو التاريخ الدقيق للميلاد ومثالياً ساعة الميلاد.',
-
-        labelName:           'الاسم',
-        placeholderName:     'الاسم الأول والأخير',
-        errorName:           'يرجى إدخال اسمك.',
-
-        labelRelation:       'العلاقة',
-        rel_self:            'أنا',
-        rel_spouse:          'الزوج/الزوجة',
-        rel_partner:         'الشريك',
-        rel_parent:          'أحد الوالدين',
-        rel_child:           'الطفل',
-        rel_friend:          'صديق',
-        rel_other:           'إدخال مباشر',
-        relCustomPlaceholder:'أدخل العلاقة',
-
-        labelDob:  'تاريخ الميلاد',
-        dobYear:   'سنة',
-        dobMonth:  'شهر',
-        dobDay:    'يوم',
-        errorDob:  'يرجى إدخال تاريخ صحيح.',
-
-        labelHour:   'ساعة الميلاد',
-        hourOpt:     '(اختياري لكن مُوصى به)',
-        hourUnknown: 'غير معروف',
-
-        labelGender:  'الجنس',
-        genderMale:   'ذكر',
-        genderFemale: 'أنثى',
-        genderError:  'يرجى تحديد جنسك.',
-
-        submitBtn:   'افتح ساجوي',
-        privacyNote: 'لا نقوم أبداً بتخزين معلوماتك الشخصية أو مشاركتها.',
-
-        footer:      '© 2026 UnlockSaju · حكمة قديمة، بصيرة حديثة',
-        loadingText: 'جارٍ قراءة الأعمدة…',
-
-        resultTitle: 'قدرك في انتظارك',
-        resultBody:  'تم استلام مخطط ميلادك. جارٍ تحضير قراءة ساجو كاملة تشمل عناصرك الخمسة وطاقتك السائدة وتيارات حظ عام 2026.',
-        resultSoon:  '(ميزة القراءة الكاملة قريباً)',
-        resultClose: 'إغلاق',
-      },
-
-      pt: {
-        dir: 'ltr',
-        langLabel:  'Português',
-        popupTitle: 'Selecionar idioma',
-
-        heroTagline: '사주팔자 · Os Quatro Pilares do Destino',
-        heroUnlock:  'Revele',
-        heroYour:    'Seu',
-        heroFate:    'Destino',
-        heroSub:     'Nascido num momento preciso, seu destino está escrito em oito caracteres — céu e terra entrelaçados. Deixe-nos revelar o que o cosmos inscreveu na hora do seu nascimento.',
-        ctaBtn:      'Revelar Meu Destino',
-
-        feat1Title: 'Cinco Elementos',  feat1Desc: 'Descubra o equilíbrio de Madeira, Fogo, Terra, Metal e Água no seu mapa.',
-        feat2Title: 'Ciclos de Vida',   feat2Desc: 'Compreenda os pilares de sorte decenais que moldam cada capítulo da sua vida.',
-        feat3Title: 'Fortuna 2026',     feat3Desc: 'Veja o que o Ano do Cavalo reserva especialmente para você.',
-        feat4Title: 'Relacionamentos',  feat4Desc: 'Descubra a energia do seu parceiro ideal e a compatibilidade através dos seus pilares.',
-
-        explSubtitle: 'O que é o Saju?',
-        explTitle:    'Os Quatro Pilares do Destino',
-        explP1: 'Saju (사주), literalmente "quatro pilares", é um sistema milenar coreano e do Leste Asiático de análise do destino. No momento do seu nascimento, o cosmos se alinhou numa configuração precisa — o ano, o mês, o dia e a hora produzem cada um um pilar composto por um Tronco Celestial e um Ramo Terrestre. Esses oito caracteres, conhecidos como Paljja (팔자), formam o mapa da sua natureza, suas lutas, seus dons e os ritmos da sua vida.',
-        explP2: 'Ao contrário da astrologia ocidental, o Saju baseia-se na interação dos Dez Troncos Celestiais e dos Doze Ramos Terrestres — codificando os Cinco Elementos e as energias cíclicas do Yin e do Yang num mapa vivo do tempo.',
-        explP3: 'Uma leitura habilidosa revela muito mais do que personalidade. Ela ilumina seu elemento dominante, seus pilares de sorte decenais, sua fortuna anual e a assinatura energética dos seus relacionamentos e caminhos profissionais ideais.',
-
-        p1t: 'Pilar do Ano',  p1d: 'Energia ancestral, infância e o rosto que você mostra ao mundo.',
-        p2t: 'Pilar do Mês',  p2d: 'Pais, trajetória profissional e a energia dos seus melhores anos adultos.',
-        p3t: 'Pilar do Dia',  p3d: 'Seu ser essencial — o Mestre do Dia que rege todo o seu mapa.',
-        p4t: 'Pilar da Hora', p4d: 'Desejos internos, filhos e a energia dos seus anos posteriores.',
-
-        formTitle:    'Insira suas informações de nascimento',
-        formSubtitle: 'O Saju requer a data exata e, idealmente, a hora do seu nascimento.',
-
-        labelName:           'Nome',
-        placeholderName:     'Nome completo',
-        errorName:           'Por favor, insira seu nome.',
-
-        labelRelation:       'Relacionamento',
-        rel_self:            'Eu mesmo',
-        rel_spouse:          'Cônjuge',
-        rel_partner:         'Parceiro(a)',
-        rel_parent:          'Pai/Mãe',
-        rel_child:           'Filho(a)',
-        rel_friend:          'Amigo(a)',
-        rel_other:           'Inserir diretamente',
-        relCustomPlaceholder:'Inserir relacionamento',
-
-        labelDob:  'Data de nascimento',
-        dobYear:   'AAAA',
-        dobMonth:  'MM',
-        dobDay:    'DD',
-        errorDob:  'Por favor, insira uma data válida (AAAA / MM / DD).',
-
-        labelHour:   'Hora de nascimento',
-        hourOpt:     '(opcional, mas recomendada)',
-        hourUnknown: 'Desconhecida',
-
-        labelGender:  'Gênero',
-        genderMale:   'Masculino',
-        genderFemale: 'Feminino',
-        genderError:  'Por favor, selecione seu gênero.',
-
-        submitBtn:   'Desbloquear Meu Saju',
-        privacyNote: 'Nunca armazenamos nem compartilhamos suas informações pessoais.',
-
-        footer:      '© 2026 UnlockSaju · Sabedoria ancestral, perspectiva moderna',
-        loadingText: 'Lendo os pilares…',
-
-        resultTitle: 'Seu Destino Aguarda',
-        resultBody:  'Seu mapa natal foi recebido. Uma leitura completa do Saju abrangendo seus cinco elementos, energia dominante e as correntes de fortuna de 2026 está sendo preparada para você.',
-        resultSoon:  '(Recurso de leitura completa em breve)',
-        resultClose: 'Fechar',
-      },
-
-      ru: {
-        dir: 'ltr',
-        langLabel:  'Русский',
-        popupTitle: 'Выбрать язык',
-
-        heroTagline: '사주팔자 · Четыре Столпа Судьбы',
-        heroUnlock:  'Раскройте',
-        heroYour:    'Вашу',
-        heroFate:    'Судьбу',
-        heroSub:     'Рождённый в точный миг, ваша судьба начертана в восьми знаках — небо и земля переплелись воедино. Позвольте нам открыть то, что космос запечатлел в час вашего рождения.',
-        ctaBtn:      'Раскрыть Мою Судьбу',
-
-        feat1Title: 'Пять Стихий',     feat1Desc: 'Откройте баланс Дерева, Огня, Земли, Металла и Воды в вашей карте.',
-        feat2Title: 'Жизненные Циклы', feat2Desc: 'Поймите десятилетние столпы удачи, формирующие каждую главу вашей жизни.',
-        feat3Title: 'Фортуна 2026',    feat3Desc: 'Узнайте, что приготовил вам Год Лошади.',
-        feat4Title: 'Отношения',       feat4Desc: 'Раскройте энергию идеального партнёра и совместимость через ваши столпы.',
-
-        explSubtitle: 'Что такое Саджу?',
-        explTitle:    'Четыре Столпа Судьбы',
-        explP1: 'Саджу (사주), буквально «четыре столпа» — тысячелетняя корейская и восточноазиатская система анализа судьбы. В момент вашего рождения космос выстроился в точную конфигурацию: год, месяц, день и час образуют столп из Небесного Ствола и Земной Ветви. Эти восемь знаков, известные как Палджа (팔자), составляют план вашей природы, испытаний, даров и ритмов жизни.',
-        explP2: 'В отличие от западной астрологии, Саджу опирается на взаимодействие Десяти Небесных Стволов и Двенадцати Земных Ветвей — кодируя Пять Стихий и циклические энергии Инь и Ян в живую карту времени.',
-        explP3: 'Опытное прочтение раскрывает куда больше, чем личность. Оно освещает вашу ведущую стихию, десятилетние столпы удачи, ежегодную фортуну и энергетическую подпись ваших идеальных отношений и карьерных путей.',
-
-        p1t: 'Столп Года',   p1d: 'Энергия предков, раннее детство и лицо, которое вы показываете миру.',
-        p2t: 'Столп Месяца', p2d: 'Родители, карьерный путь и энергия лучших взрослых лет.',
-        p3t: 'Столп Дня',    p3d: 'Ваше истинное я — Хозяин Дня, управляющий всей картой.',
-        p4t: 'Столп Часа',   p4d: 'Внутренние желания, дети и энергия поздних лет жизни.',
-
-        formTitle:    'Введите информацию о рождении',
-        formSubtitle: 'Для Саджу необходима точная дата и, в идеале, час рождения.',
-
-        labelName:           'Имя',
-        placeholderName:     'Имя и фамилия',
-        errorName:           'Пожалуйста, введите ваше имя.',
-
-        labelRelation:       'Отношение',
-        rel_self:            'Я сам',
-        rel_spouse:          'Супруг(а)',
-        rel_partner:         'Партнёр',
-        rel_parent:          'Родитель',
-        rel_child:           'Ребёнок',
-        rel_friend:          'Друг',
-        rel_other:           'Ввести вручную',
-        relCustomPlaceholder:'Введите отношение',
-
-        labelDob:  'Дата рождения',
-        dobYear:   'ГГГГ',
-        dobMonth:  'ММ',
-        dobDay:    'ДД',
-        errorDob:  'Пожалуйста, введите корректную дату (ГГГГ / ММ / ДД).',
-
-        labelHour:   'Час рождения',
-        hourOpt:     '(необязательно, но рекомендуется)',
-        hourUnknown: 'Неизвестно',
-
-        labelGender:  'Пол',
-        genderMale:   'Мужской',
-        genderFemale: 'Женский',
-        genderError:  'Пожалуйста, выберите пол.',
-
-        submitBtn:   'Разблокировать Мой Саджу',
-        privacyNote: 'Мы никогда не храним и не передаём ваши личные данные.',
-
-        footer:      '© 2026 UnlockSaju · Древняя мудрость, современное видение',
-        loadingText: 'Читаем столпы…',
-
-        resultTitle: 'Ваша судьба ждёт',
-        resultBody:  'Ваша натальная карта получена. Полное прочтение Саджу, охватывающее пять стихий, ведущую энергию и потоки удачи 2026 года, готовится для вас.',
-        resultSoon:  '(Функция полного прочтения скоро появится)',
-        resultClose: 'Закрыть',
-      },
-
-    }; // end TRANSLATIONS
-
-    /* ─────────────────────────────────────────
-       STATE
-    ───────────────────────────────────────── */
-    let currentLang    = 'en';
+    // =========================
+    // i18n (A-option: language-specific URL + JSON dictionaries)
+    // =========================
+    const PAGE_LANG = 'en'; // <-- copy this file to /zh/index.html etc and change to 'zh'
+    const SUPPORTED_LANGS = ['en','zh','hi','es','fr','ar','pt','ru'];
+    const LANG_PATH = { en:'/en/', zh:'/zh/', hi:'/hi/', es:'/es/', fr:'/fr/', ar:'/ar/', pt:'/pt/', ru:'/ru/' };
+
+    let currentLang = PAGE_LANG;
     let selectedGender = '';
 
-    /* ─────────────────────────────────────────
-       i18n ENGINE
-       Reads data-i18n and data-i18n-placeholder
-       attributes to apply translations automatically.
-    ───────────────────────────────────────── */
-    function applyLang(lang) {
-      const t = TRANSLATIONS[lang];
+    async function loadDict(lang) {
+      const res = await fetch(`/locales/${lang}.json`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Failed to load locale: ${lang}`);
+      return await res.json();
+    }
+
+    function applyDict(lang, t) {
       if (!t) return;
 
-      currentLang = lang;
-
-      // Direction + lang attribute
-      document.documentElement.dir  = t.dir;
+      document.documentElement.dir  = t.dir || 'ltr';
       document.documentElement.lang = lang;
 
-      // Text nodes: [data-i18n="key"] → t[key]
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) el.textContent = t[key];
       });
 
-      // Placeholders: [data-i18n-placeholder="key"] → t[key]
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (t[key] !== undefined) el.placeholder = t[key];
       });
 
-      // Relation <select> options (text nodes can't use data-i18n reliably in all browsers)
+      // Relationship select options (special case)
       const relKeys = ['self', 'spouse', 'partner', 'parent', 'child', 'friend', 'other'];
       relKeys.forEach(k => {
         const opt = document.querySelector(`#field-relation option[value="${k}"]`);
         if (opt && t[`rel_${k}`]) opt.textContent = t[`rel_${k}`];
       });
 
-      // Month placeholder option
       const monthPlaceholder = document.querySelector('#birth-month option[value=""]');
       if (monthPlaceholder && t.dobMonth) monthPlaceholder.textContent = t.dobMonth;
 
-      // Hour unknown option
       const hourUnknown = document.querySelector('#birth-hour option[value=""]');
       if (hourUnknown && t.hourUnknown) hourUnknown.textContent = t.hourUnknown;
 
-      // Gender button data-i18n overrides — one button uses genderMale, the other genderFemale
-      document.getElementById('btn-male').setAttribute('data-i18n', 'genderMale');
-      document.getElementById('btn-female').setAttribute('data-i18n', 'genderFemale');
-      document.getElementById('btn-male').textContent   = t.genderMale;
-      document.getElementById('btn-female').textContent = t.genderFemale;
+      // Gender buttons (special case)
+      const maleBtn = document.getElementById('btn-male');
+      const femaleBtn = document.getElementById('btn-female');
+      if (maleBtn && t.genderMale) maleBtn.textContent = t.genderMale;
+      if (femaleBtn && t.genderFemale) femaleBtn.textContent = t.genderFemale;
 
-      // Lang label in button
-      document.getElementById('lang-label').textContent = t.langLabel;
+      // Language label on top button
+      const langLabelEl = document.getElementById('lang-label');
+      if (langLabelEl && t.langLabel) langLabelEl.textContent = t.langLabel;
     }
 
-    /* ─────────────────────────────────────────
-       LANGUAGE PICKER
-    ───────────────────────────────────────── */
+    function setActiveLangTile(lang) {
+      document.querySelectorAll('.lang-tile').forEach(tile => tile.classList.remove('active'));
+      const tile = document.querySelector(`.lang-tile[onclick*="'${lang}'"]`);
+      if (tile) tile.classList.add('active');
+    }
+
+    async function initI18n() {
+      try {
+        const dict = await loadDict(PAGE_LANG);
+        applyDict(PAGE_LANG, dict);
+        setActiveLangTile(PAGE_LANG);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    // For A-option: language switch = navigate to language URL (SEO-friendly)
+    function goToLang(lang) {
+      if (!SUPPORTED_LANGS.includes(lang)) lang = 'en';
+      try { localStorage.setItem('lang', lang); } catch (_) {}
+      location.href = LANG_PATH[lang] || '/en/';
+    }
+
     function toggleLang() {
       const btn     = document.getElementById('lang-btn');
       const overlay = document.getElementById('lang-overlay');
@@ -1930,45 +1316,34 @@
     }
 
     function selectLang(tileEl, lang) {
-      document.querySelectorAll('.lang-tile').forEach(t => t.classList.remove('active'));
-      tileEl.classList.add('active');
+      // A-option: switch language by moving to a language-specific URL (SEO-friendly)
       document.getElementById('lang-overlay').classList.remove('open');
       document.getElementById('lang-btn').classList.remove('open');
-      applyLang(lang);
+      goToLang(lang);
     }
 
-    // Close on Escape key
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         document.getElementById('lang-overlay').classList.remove('open');
         document.getElementById('lang-btn').classList.remove('open');
+        closeResult();
       }
     });
 
-    /* ─────────────────────────────────────────
-       NAVIGATION
-    ───────────────────────────────────────── */
     function scrollToForm() {
       document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
     }
 
-    /* ─────────────────────────────────────────
-       RELATIONSHIP — custom input toggle
-    ───────────────────────────────────────── */
     document.getElementById('field-relation').addEventListener('change', function () {
       const custom = document.getElementById('field-relation-custom');
       custom.style.display = this.value === 'other' ? 'block' : 'none';
       if (this.value === 'other') custom.focus();
     });
 
-    /* ─────────────────────────────────────────
-       GENDER TOGGLE
-    ───────────────────────────────────────── */
     function setGender(btn) {
       const val = btn.getAttribute('data-gender');
 
       if (selectedGender === val) {
-        // Deselect on second tap
         selectedGender = '';
         document.getElementById('gender-val').value = '';
         document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
@@ -1982,9 +1357,6 @@
       document.getElementById('error-gender').classList.remove('visible');
     }
 
-    /* ─────────────────────────────────────────
-       FORM VALIDATION (reusable helper)
-    ───────────────────────────────────────── */
     function validateField(inputEl, errorEl, isValid) {
       if (isValid) {
         inputEl.classList.remove('input-error');
@@ -1992,7 +1364,6 @@
       } else {
         inputEl.classList.add('input-error');
         errorEl.classList.add('visible');
-        // Auto-clear on correction
         const eventType = inputEl.tagName === 'SELECT' ? 'change' : 'input';
         inputEl.addEventListener(eventType, () => {
           inputEl.classList.remove('input-error');
@@ -2002,9 +1373,22 @@
       return isValid;
     }
 
-    /* ─────────────────────────────────────────
-       FORM SUBMISSION
-    ───────────────────────────────────────── */
+    /* ✅ 숫자 입력 방어: "최대 자리수" 강제 (type=number는 maxlength가 안 먹어서 JS로 처리) */
+    function enforceMaxDigits(inputEl, maxDigits) {
+      const raw = String(inputEl.value || '');
+      const digitsOnly = raw.replace(/\D/g, '');
+      const trimmed = digitsOnly.slice(0, maxDigits);
+      if (raw !== trimmed) inputEl.value = trimmed;
+    }
+
+    // ✅ DD: 최대 2자리 제한
+    const dayEl = document.getElementById('birth-day');
+    dayEl.addEventListener('input', () => enforceMaxDigits(dayEl, 2));
+
+    function showMaintenanceModal() {
+      document.getElementById('result').classList.add('show');
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
 
@@ -2013,6 +1397,9 @@
       const monthEl  = document.getElementById('birth-month');
       const dayEl    = document.getElementById('birth-day');
       const errorDob = document.getElementById('error-dob');
+
+      // ✅ 혹시 붙여넣기로 길게 들어온 경우 한 번 더 방어
+      enforceMaxDigits(dayEl, 2);
 
       const yr = parseInt(yearEl.value, 10);
       const dy = parseInt(dayEl.value, 10);
@@ -2023,7 +1410,6 @@
       const dayOk   = !isNaN(dy) && dy >= 1 && dy <= 31;
       const dobOk   = yearOk && monthOk && dayOk;
 
-      // DOB: validate all three sub-fields together, show one error message
       if (dobOk) {
         [yearEl, monthEl, dayEl].forEach(el => el.classList.remove('input-error'));
         errorDob.classList.remove('visible');
@@ -2038,7 +1424,6 @@
         });
       }
 
-      // Gender
       let genderOk = true;
       if (!document.getElementById('gender-val').value) {
         document.getElementById('error-gender').classList.add('visible');
@@ -2047,23 +1432,16 @@
 
       if (!nameOk || !dobOk || !genderOk) return;
 
-      // ── All valid: disable button, show loader ──
-      const submitBtn = document.getElementById('submit-btn');
-      submitBtn.disabled = true;
-
-      document.getElementById('loading').classList.add('show');
-
-      setTimeout(() => {
-        document.getElementById('loading').classList.remove('show');
-        document.getElementById('result').classList.add('show');
-        submitBtn.disabled = false;
-      }, 2400);
+      // ✅ 아직 서비스 개발 전 → 점검중 모달 띄우기
+      showMaintenanceModal();
     }
 
     function closeResult() {
       document.getElementById('result').classList.remove('show');
     }
 
+    // Initialize translations for this language page
+    initI18n();
   </script>
 </body>
 </html>
