@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UnlockSaju — Reveal Your Destiny</title>
-
   <script defer src="/_vercel/insights/script.js"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=IM+Fell+English:ital@0;1&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --ink: #0d0a07;
@@ -19,11 +20,11 @@
       --red: #c0392b;
       --gold: #b8860b;
       --gold-light: #d4a017;
-      --smoke: rgba(13,10,7,0.06);
     }
 
     html, body {
-      width: 100%; min-height: 100vh;
+      width: 100%;
+      min-height: 100vh;
       background: var(--paper);
       color: var(--ink);
       font-family: 'IM Fell English', Georgia, serif;
@@ -32,59 +33,116 @@
 
     body::before {
       content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       opacity: 0.5;
     }
 
+    /* Language Bar */
     .lang-bar {
-      position: relative; z-index: 10;
-      display: flex; justify-content: flex-end; align-items: center;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       padding: 10px 24px;
       background: var(--ink);
     }
+
+    [dir="rtl"] .lang-bar {
+      justify-content: flex-start;
+    }
+
     .lang-btn {
-      display: flex; align-items: center; gap: 8px;
-      background: none; border: 1px solid rgba(184,134,11,0.35);
-      color: #c8bfb0; cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: 1px solid rgba(184, 134, 11, 0.35);
+      color: #c8bfb0;
+      cursor: pointer;
       padding: 7px 14px;
-      font-family: 'Cinzel', serif; font-size: 0.72rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       transition: border-color 0.2s, color 0.2s;
     }
-    .lang-btn:hover { border-color: var(--gold); color: var(--gold-light); }
-    .lang-btn .globe { font-size: 1rem; }
-    .lang-btn .chevron { font-size: 0.6rem; margin-left: 2px; transition: transform 0.2s; }
-    .lang-btn.open .chevron { transform: rotate(180deg); }
+
+    .lang-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .lang-btn .chevron {
+      font-size: 0.6rem;
+      transition: transform 0.2s;
+    }
+
+    .lang-btn.open .chevron {
+      transform: rotate(180deg);
+    }
 
     .lang-popup-overlay {
       display: none;
-      position: fixed; inset: 0; z-index: 300;
-      background: rgba(13,10,7,0.7);
-      align-items: flex-start; justify-content: flex-end;
-      padding-top: 52px; padding-right: 24px;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(13, 10, 7, 0.72);
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding-top: 50px;
+      padding-right: 24px;
     }
-    .lang-popup-overlay.open { display: flex; }
+
+    [dir="rtl"] .lang-popup-overlay {
+      justify-content: flex-start;
+      padding-left: 24px;
+      padding-right: 0;
+    }
+
+    .lang-popup-overlay.open {
+      display: flex;
+    }
 
     .lang-popup {
       background: #13100c;
-      border: 1px solid rgba(184,134,11,0.3);
-      box-shadow: 0 16px 60px rgba(0,0,0,0.7);
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.7);
       padding: 28px;
-      width: 380px;
+      width: 440px;
       animation: popIn 0.2s ease;
     }
+
+    @media (max-width: 500px) {
+      .lang-popup {
+        width: calc(100vw - 48px);
+      }
+    }
+
     @keyframes popIn {
-      from { opacity: 0; transform: translateY(-10px) scale(0.97); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+      from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .lang-popup-title {
-      font-family: 'Cinzel', serif; font-size: 0.68rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(184,134,11,0.2);
+      border-bottom: 1px solid rgba(184, 134, 11, 0.2);
     }
 
     .lang-grid {
@@ -94,51 +152,85 @@
     }
 
     .lang-tile {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
       cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
       border-radius: 1px;
     }
+
     .lang-tile:hover {
-      background: rgba(184,134,11,0.1);
-      border-color: rgba(184,134,11,0.35);
+      background: rgba(184, 134, 11, 0.1);
+      border-color: rgba(184, 134, 11, 0.35);
     }
+
     .lang-tile.active {
-      background: rgba(184,134,11,0.15);
+      background: rgba(184, 134, 11, 0.15);
       border-color: var(--gold);
     }
-    .lang-flag { font-size: 1.5rem; line-height: 1; }
-    .lang-names { display: flex; flex-direction: column; gap: 2px; }
+
+    .lang-flag {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .lang-names {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
     .lang-en {
-      font-family: 'Cinzel', serif; font-size: 0.7rem;
-      letter-spacing: 0.08em; color: #c8bfb0;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: #c8bfb0;
       text-transform: uppercase;
     }
-    .lang-native {
-      font-size: 0.85rem; color: #7a6f60;
-    }
-    .lang-tile.active .lang-en { color: var(--gold-light); }
-    .lang-tile.active .lang-native { color: var(--gold); }
 
+    .lang-native {
+      font-size: 0.88rem;
+      color: #7a6f60;
+    }
+
+    .lang-tile.active .lang-en {
+      color: var(--gold-light);
+    }
+
+    .lang-tile.active .lang-native {
+      color: var(--gold);
+    }
+
+    /* Top Strip */
     .top-strip {
-      width: 100%; height: 4px;
+      width: 100%;
+      height: 4px;
       background: linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--red) 100%);
     }
 
+    /* Hero */
     .hero {
-      position: relative; z-index: 1;
-      display: flex; flex-direction: column; align-items: center;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 60px 20px 80px;
       text-align: center;
     }
 
     .hero-circle {
       position: absolute;
-      top: -80px; left: 50%; transform: translateX(-50%);
-      width: 520px; height: 520px; border-radius: 50%;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
       background: radial-gradient(circle at 40% 40%, #e8d5b0 0%, transparent 70%);
       opacity: 0.55;
       pointer-events: none;
@@ -146,353 +238,661 @@
 
     .tagline {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 18px;
-      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
     }
 
     .hero h1 {
       font-family: 'Cinzel', serif;
       font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 900; line-height: 1;
+      font-weight: 900;
+      line-height: 1;
       letter-spacing: -0.02em;
       background: linear-gradient(160deg, #1a1208 30%, var(--gold) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
     }
 
-    .hero h1 span { color: var(--red); -webkit-text-fill-color: var(--red); }
+    .hero h1 .hero-your {
+      -webkit-text-fill-color: var(--red);
+    }
 
     .hero-sub {
-      margin-top: 22px; max-width: 480px;
-      font-size: 1.05rem; line-height: 1.75; color: #4a3f30;
+      margin-top: 22px;
+      max-width: 480px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #4a3f30;
       font-style: italic;
-      opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
     }
 
     .trigrams {
-      display: flex; gap: 28px; margin-top: 36px;
-      opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
+      display: flex;
+      gap: 28px;
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
     }
+
     .trigram {
-      display: flex; flex-direction: column; gap: 5px; align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
     }
+
     .trigram-bar {
-      width: 30px; height: 4px; background: var(--gold);
+      width: 30px;
+      height: 4px;
+      background: var(--gold);
       border-radius: 2px;
     }
-    .trigram-bar.broken { background: none; display: flex; gap: 5px; }
+
+    .trigram-bar.broken {
+      background: none;
+      display: flex;
+      gap: 5px;
+    }
+
     .trigram-bar.broken::before,
     .trigram-bar.broken::after {
-      content: ''; flex: 1; height: 4px;
-      background: var(--gold); border-radius: 2px;
+      content: '';
+      flex: 1;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
     }
 
     .divider {
-      display: flex; align-items: center; gap: 16px;
-      width: 100%; max-width: 500px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 500px;
       margin: 48px auto 0;
-      opacity: 0; animation: fadeUp 0.9s 1s forwards;
+      opacity: 0;
+      animation: fadeUp 0.9s 1s forwards;
     }
-    .divider::before, .divider::after {
-      content: ''; flex: 1; height: 1px; background: var(--gold);
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
     }
-    .divider span { font-size: 1.3rem; color: var(--gold); }
+
+    .divider span {
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
 
     .cta-btn {
       display: inline-block;
       margin-top: 40px;
       padding: 16px 48px;
       font-family: 'Cinzel', serif;
-      font-size: 0.95rem; letter-spacing: 0.18em;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--paper);
       background: var(--ink);
-      border: none; cursor: pointer;
-      position: relative; overflow: hidden;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
       clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
       transition: transform 0.2s;
-      opacity: 0; animation: fadeUp 0.9s 1.1s forwards;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.1s forwards;
     }
+
     .cta-btn::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-      opacity: 0; transition: opacity 0.3s;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .cta-btn:hover::before { opacity: 1; }
-    .cta-btn:hover { transform: translateY(-2px); }
-    .cta-btn span { position: relative; z-index: 1; }
 
-    .features {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1px; background: rgba(0,0,0,0.1);
-      border-top: 1px solid rgba(0,0,0,0.1);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+    .cta-btn:hover::before {
+      opacity: 1;
     }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Features */
+    .features {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
     .feature {
       background: var(--paper);
       padding: 32px 28px;
       text-align: center;
     }
-    .feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
     .feature h3 {
-      font-family: 'Cinzel', serif; font-size: 0.8rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 8px;
-    }
-    .feature p { font-size: 0.88rem; color: #5a4f40; line-height: 1.6; font-style: italic; }
-
-    #form-section {
-      position: relative; z-index: 1;
-      max-width: 680px; margin: 80px auto;
-      padding: 0 20px;
-    }
-
-    .form-header { text-align: center; margin-bottom: 48px; }
-    .form-header h2 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 600; color: var(--ink);
-    }
-    .form-header p {
-      margin-top: 12px; color: #5a4f40; font-style: italic;
-      font-size: 0.95rem; line-height: 1.7;
-    }
-
-    .form-card {
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(184, 134, 11, 0.25);
-      border-radius: 2px;
-      padding: 48px 40px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
-      backdrop-filter: blur(4px);
-    }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media (max-width: 540px) {
-      .form-row { grid-template-columns: 1fr; }
-      .form-card { padding: 32px 20px; }
-    }
-
-    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-    .field label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--gold);
-    }
-    .field input, .field select {
-      background: rgba(245,239,230,0.8);
-      border: 1px solid rgba(184,134,11,0.3);
-      border-radius: 1px;
-      padding: 13px 16px;
-      font-family: 'IM Fell English', Georgia, serif;
-      font-size: 0.97rem; color: var(--ink);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none; width: 100%;
-    }
-    .field input:focus, .field select:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(184,134,11,0.1);
-    }
-    .field select { cursor: pointer; appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8860b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 16px center;
-      padding-right: 40px;
+      margin-bottom: 8px;
     }
 
-    .optional { font-size: 0.75rem; color: #9a8a70; font-style: italic; font-family: serif; }
-
-    .gender-row { display: flex; gap: 0; }
-    .gender-btn {
-      flex: 1; padding: 13px;
-      font-family: 'Cinzel', serif; font-size: 0.75rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      border: 1px solid rgba(184,134,11,0.3);
-      background: rgba(245,239,230,0.8);
-      color: #5a4f40; cursor: pointer;
-      transition: all 0.2s;
-    }
-    .gender-btn:first-child { border-radius: 1px 0 0 1px; }
-    .gender-btn:last-child { border-radius: 0 1px 1px 0; border-left: none; }
-    .gender-btn.active {
-      background: var(--ink); color: var(--gold-light);
-      border-color: var(--ink);
+    .feature p {
+      font-size: 0.88rem;
+      color: #5a4f40;
+      line-height: 1.6;
+      font-style: italic;
     }
 
-    .submit-wrap { text-align: center; margin-top: 12px; }
-    .submit-btn {
-      display: inline-block; padding: 18px 64px;
-      font-family: 'Cinzel', serif; font-size: 0.9rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--paper); background: var(--ink);
-      border: none; cursor: pointer;
-      clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
-      position: relative; overflow: hidden;
-      transition: transform 0.2s;
-    }
-    .submit-btn::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, #8B0000 0%, var(--gold) 100%);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .submit-btn:hover::before { opacity: 1; }
-    .submit-btn:hover { transform: translateY(-2px); }
-    .submit-btn span { position: relative; z-index: 1; }
-
-    .privacy-note {
-      text-align: center; margin-top: 16px;
-      font-size: 0.78rem; color: #9a8a70; font-style: italic;
-    }
-
+    /* Explanation */
     .explanation {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       background: var(--ink);
       padding: 80px 20px;
     }
-    .expl-inner { max-width: 760px; margin: 0 auto; }
-    .expl-heading { text-align: center; margin-bottom: 44px; }
+
+    .expl-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .expl-heading {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
     .tagline-sm {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
     }
+
     .expl-heading h2 {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.6rem, 4vw, 2.4rem);
-      color: var(--paper); font-weight: 600;
+      color: var(--paper);
+      font-weight: 600;
     }
+
     .gold-rule {
-      width: 60px; height: 1px; background: var(--gold);
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
       margin: 20px auto 0;
     }
+
     .expl-body p {
-      font-size: 1rem; line-height: 1.9;
-      color: #c8bfb0; margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #c8bfb0;
+      margin-bottom: 20px;
       font-style: italic;
     }
-    .expl-body p em { color: var(--gold-light); font-style: italic; }
-    .expl-body p strong { color: #e0d5c0; font-style: normal; }
+
+    .expl-body p em {
+      color: var(--gold-light);
+    }
+
+    .expl-body p strong {
+      color: #e0d5c0;
+      font-style: normal;
+    }
 
     .expl-pillars {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: rgba(184,134,11,0.2);
-      border: 1px solid rgba(184,134,11,0.2);
+      gap: 1px;
+      background: rgba(184, 134, 11, 0.2);
+      border: 1px solid rgba(184, 134, 11, 0.2);
       margin-top: 52px;
     }
+
     @media (max-width: 600px) {
-      .expl-pillars { grid-template-columns: repeat(2, 1fr); }
+      .expl-pillars {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
+
     .pillar-card {
       background: #130f0a;
-      padding: 28px 20px; text-align: center;
+      padding: 28px 20px;
+      text-align: center;
     }
+
     .pillar-char {
-      font-size: 2.2rem; color: var(--gold);
+      font-size: 2.2rem;
+      color: var(--gold);
       font-family: 'Noto Serif KR', serif;
       margin-bottom: 10px;
     }
+
     .pillar-card h4 {
-      font-family: 'Cinzel', serif; font-size: 0.72rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: #e0d5c0; margin-bottom: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e0d5c0;
+      margin-bottom: 8px;
     }
+
     .pillar-card p {
-      font-size: 0.8rem; color: #7a6f60;
-      line-height: 1.6; font-style: italic;
+      font-size: 0.8rem;
+      color: #7a6f60;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Form */
+    #form-section {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .form-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .form-header p {
+      margin-top: 12px;
+      color: #5a4f40;
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(184, 134, 11, 0.25);
+      border-radius: 2px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(4px);
+    }
+
+    @media (max-width: 540px) {
+      .form-card {
+        padding: 32px 20px;
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .field label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .field input,
+    .field select {
+      background: rgba(245, 239, 230, 0.8);
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      border-radius: 1px;
+      padding: 13px 16px;
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 0.97rem;
+      color: var(--ink);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+    }
+
+    .field select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8860b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .optional {
+      font-size: 0.75rem;
+      color: #9a8a70;
+      font-style: italic;
+    }
+
+    .dob-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      gap: 8px;
+    }
+
+    .dob-row input[type="number"]::-webkit-inner-spin-button,
+    .dob-row input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .dob-row input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .relation-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gender-row {
+      display: flex;
+      gap: 0;
+    }
+
+    .gender-btn {
+      flex: 1;
+      padding: 13px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      background: rgba(245, 239, 230, 0.8);
+      color: #5a4f40;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .gender-btn:first-child {
+      border-radius: 1px 0 0 1px;
+    }
+
+    .gender-btn:last-child {
+      border-radius: 0 1px 1px 0;
+      border-left: none;
+    }
+
+    .gender-btn.active {
+      background: var(--ink);
+      color: var(--gold-light);
+      border-color: var(--ink);
+    }
+
+    .gender-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .submit-wrap {
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 18px 64px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #8B0000 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .submit-btn:hover::before {
+      opacity: 1;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .submit-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .privacy-note {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: #9a8a70;
+      font-style: italic;
     }
 
     .field input.input-error,
     .field select.input-error {
       border-color: var(--red);
-      box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
       animation: shake 0.35s ease;
     }
+
     .field-error {
-      font-size: 0.78rem; color: var(--red);
-      font-style: italic; margin-top: 4px;
-    }
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      25% { transform: translateX(-6px); }
-      75% { transform: translateX(6px); }
+      font-size: 0.78rem;
+      color: var(--red);
+      font-style: italic;
+      margin-top: 4px;
     }
 
-
+    /* Loading / Result */
     #loading {
       display: none;
-      position: fixed; inset: 0; z-index: 100;
-      background: rgba(13,10,7,0.92);
-      align-items: center; justify-content: center;
-      flex-direction: column; gap: 24px;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(13, 10, 7, 0.92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
     }
-    #loading.show { display: flex; }
+
+    #loading.show {
+      display: flex;
+    }
+
     .loading-circle {
-      width: 60px; height: 60px;
-      border: 2px solid rgba(184,134,11,0.2);
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(184, 134, 11, 0.2);
       border-top-color: var(--gold);
       border-radius: 50%;
       animation: spin 1.2s linear infinite;
     }
+
     #loading p {
-      font-family: 'Cinzel', serif; font-size: 0.85rem;
-      letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
     }
 
     #result {
       display: none;
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(13,10,7,0.88);
-      align-items: center; justify-content: center;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(13, 10, 7, 0.88);
+      align-items: center;
+      justify-content: center;
       padding: 20px;
     }
-    #result.show { display: flex; }
+
+    #result.show {
+      display: flex;
+    }
+
     .result-card {
       background: var(--paper);
-      border: 1px solid rgba(184,134,11,0.4);
-      max-width: 480px; width: 100%;
-      padding: 48px 40px; text-align: center;
+      border: 1px solid rgba(184, 134, 11, 0.4);
+      max-width: 480px;
+      width: 100%;
+      padding: 48px 40px;
+      text-align: center;
       position: relative;
     }
-    .result-card::before, .result-card::after {
-      content: ''; position: absolute;
-      width: 40px; height: 40px;
-      border-color: var(--gold); border-style: solid; border-width: 0;
+
+    .result-card::before,
+    .result-card::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-color: var(--gold);
+      border-style: solid;
+      border-width: 0;
     }
-    .result-card::before { top: 12px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
-    .result-card::after { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
+
+    .result-card::before {
+      top: 12px;
+      left: 12px;
+      border-top-width: 1px;
+      border-left-width: 1px;
+    }
+
+    .result-card::after {
+      bottom: 12px;
+      right: 12px;
+      border-bottom-width: 1px;
+      border-right-width: 1px;
+    }
+
     .result-card h3 {
-      font-family: 'Cinzel', serif; font-size: 1.4rem;
-      color: var(--gold); margin-bottom: 16px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 16px;
     }
+
     .result-card p {
-      font-style: italic; line-height: 1.8; color: #3a2f20;
+      font-style: italic;
+      line-height: 1.8;
+      color: #3a2f20;
       font-size: 0.97rem;
     }
+
     .result-close {
       margin-top: 28px;
       padding: 12px 36px;
-      font-family: 'Cinzel', serif; font-size: 0.78rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      background: var(--ink); color: var(--paper);
-      border: none; cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      cursor: pointer;
     }
 
     footer {
-      position: relative; z-index: 1;
-      text-align: center; padding: 32px 20px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      font-size: 0.78rem; color: #9a8a70; font-style: italic;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 0.78rem;
+      color: #9a8a70;
+      font-style: italic;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-6px);
+      }
+      75% {
+        transform: translateX(6px);
+      }
     }
   </style>
 </head>
@@ -500,64 +900,38 @@
 
   <div class="lang-bar">
     <button class="lang-btn" id="lang-btn" onclick="toggleLang()">
-      <span class="globe">🌐</span>
-      <span id="lang-label">EN</span>
+      <span id="lang-label" data-i18n="langLabel">English</span>
       <span class="chevron">▼</span>
     </button>
   </div>
 
   <div class="lang-popup-overlay" id="lang-overlay" onclick="closeLangOnOverlay(event)">
     <div class="lang-popup">
-      <div class="lang-popup-title">Select Language</div>
+      <div class="lang-popup-title" data-i18n="popupTitle">Select Language</div>
       <div class="lang-grid">
-        <div class="lang-tile active" onclick="selectLang(this,'EN','English')">
-          <span class="lang-flag">🇺🇸</span>
-          <div class="lang-names">
-            <span class="lang-en">English</span>
-            <span class="lang-native">English</span>
-          </div>
+        <div class="lang-tile active" onclick="selectLang(this,'en')">
+          <div class="lang-names"><span class="lang-en">English</span><span class="lang-native">English</span></div>
         </div>
-        <div class="lang-tile" onclick="selectLang(this,'中文','Chinese')">
-          <span class="lang-flag">🇨🇳</span>
-          <div class="lang-names">
-            <span class="lang-en">Chinese</span>
-            <span class="lang-native">中文 (简体)</span>
-          </div>
+        <div class="lang-tile" onclick="selectLang(this,'zh')">
+          <div class="lang-names"><span class="lang-en">Chinese</span><span class="lang-native">中文 (简体)</span></div>
         </div>
-        <div class="lang-tile" onclick="selectLang(this,'日本語','Japanese')">
-          <span class="lang-flag">🇯🇵</span>
-          <div class="lang-names">
-            <span class="lang-en">Japanese</span>
-            <span class="lang-native">日本語</span>
-          </div>
+        <div class="lang-tile" onclick="selectLang(this,'hi')">
+          <div class="lang-names"><span class="lang-en">Hindi</span><span class="lang-native">हिन्दी</span></div>
         </div>
-        <div class="lang-tile" onclick="selectLang(this,'Tiếng Việt','Vietnamese')">
-          <span class="lang-flag">🇻🇳</span>
-          <div class="lang-names">
-            <span class="lang-en">Vietnamese</span>
-            <span class="lang-native">Tiếng Việt</span>
-          </div>
+        <div class="lang-tile" onclick="selectLang(this,'es')">
+          <div class="lang-names"><span class="lang-en">Spanish</span><span class="lang-native">Español</span></div>
         </div>
-        <div class="lang-tile" onclick="selectLang(this,'العربية','Arabic')">
-          <span class="lang-flag">🇸🇦</span>
-          <div class="lang-names">
-            <span class="lang-en">Arabic</span>
-            <span class="lang-native">العربية</span>
-          </div>
+        <div class="lang-tile" onclick="selectLang(this,'fr')">
+          <div class="lang-names"><span class="lang-en">French</span><span class="lang-native">Français</span></div>
         </div>
-        <div class="lang-tile" onclick="selectLang(this,'Español','Spanish')">
-          <span class="lang-flag">🇪🇸</span>
-          <div class="lang-names">
-            <span class="lang-en">Spanish</span>
-            <span class="lang-native">Español</span>
-          </div>
+        <div class="lang-tile" onclick="selectLang(this,'ar')">
+          <div class="lang-names"><span class="lang-en">Arabic</span><span class="lang-native">العربية</span></div>
         </div>
-        <div class="lang-tile" onclick="selectLang(this,'한국어','Korean')">
-          <span class="lang-flag">🇰🇷</span>
-          <div class="lang-names">
-            <span class="lang-en">Korean</span>
-            <span class="lang-native">한국어</span>
-          </div>
+        <div class="lang-tile" onclick="selectLang(this,'pt')">
+          <div class="lang-names"><span class="lang-en">Portuguese</span><span class="lang-native">Português</span></div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this,'ru')">
+          <div class="lang-names"><span class="lang-en">Russian</span><span class="lang-native">Русский</span></div>
         </div>
       </div>
     </div>
@@ -567,234 +941,408 @@
 
   <section class="hero">
     <div class="hero-circle"></div>
-
-    <p class="tagline">사주팔자 · The Four Pillars of Destiny</p>
-
-    <h1>Unlock<br><span>Your</span> Fate</h1>
-
-    <p class="hero-sub">
-      Born at a precise moment in time, your destiny is written across eight characters —
-      heaven and earth intertwined. Let us reveal what the cosmos inscribed at the hour of your birth.
-    </p>
-
+    <p class="tagline" data-i18n="heroTagline">사주팔자 · The Four Pillars of Destiny</p>
+    <h1><span data-i18n="heroUnlock">Unlock</span><br><span data-i18n="heroYour" class="hero-your">Your</span> <span data-i18n="heroFate">Fate</span></h1>
+    <p class="hero-sub" data-i18n="heroSub">Born at a precise moment in time, your destiny is written across eight characters — heaven and earth intertwined. Let us reveal what the cosmos inscribed at the hour of your birth.</p>
     <div class="trigrams">
-      <div class="trigram">
-        <div class="trigram-bar"></div>
-        <div class="trigram-bar broken"></div>
-        <div class="trigram-bar"></div>
-      </div>
-      <div class="trigram">
-        <div class="trigram-bar"></div>
-        <div class="trigram-bar"></div>
-        <div class="trigram-bar broken"></div>
-      </div>
-      <div class="trigram">
-        <div class="trigram-bar broken"></div>
-        <div class="trigram-bar"></div>
-        <div class="trigram-bar broken"></div>
-      </div>
-      <div class="trigram">
-        <div class="trigram-bar"></div>
-        <div class="trigram-bar broken"></div>
-        <div class="trigram-bar broken"></div>
-      </div>
+      <div class="trigram"><div class="trigram-bar"></div><div class="trigram-bar broken"></div><div class="trigram-bar"></div></div>
+      <div class="trigram"><div class="trigram-bar"></div><div class="trigram-bar"></div><div class="trigram-bar broken"></div></div>
+      <div class="trigram"><div class="trigram-bar broken"></div><div class="trigram-bar"></div><div class="trigram-bar broken"></div></div>
+      <div class="trigram"><div class="trigram-bar"></div><div class="trigram-bar broken"></div><div class="trigram-bar broken"></div></div>
     </div>
-
     <div class="divider"><span>☯</span></div>
-
-    <button class="cta-btn" onclick="scrollToForm()">
-      <span>Reveal My Destiny</span>
-    </button>
+    <button class="cta-btn" onclick="scrollToForm()"><span data-i18n="ctaBtn">Reveal My Destiny</span></button>
   </section>
 
   <div class="features">
-    <div class="feature">
-      <div class="feature-icon">🔥</div>
-      <h3>Five Elements</h3>
-      <p>Discover the balance of Wood, Fire, Earth, Metal & Water within your chart.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🌙</div>
-      <h3>Life Cycles</h3>
-      <p>Understand the ten-year luck pillars that shape each chapter of your life.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <h3>2026 Fortune</h3>
-      <p>See what the Year of the Horse holds in store specifically for you.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">💫</div>
-      <h3>Relationships</h3>
-      <p>Uncover your ideal partner's energy and compatibility through your pillars.</p>
-    </div>
+    <div class="feature"><div class="feature-icon">🔥</div><h3 data-i18n="feat1Title">Five Elements</h3><p data-i18n="feat1Desc">Discover the balance of Wood, Fire, Earth, Metal & Water within your chart.</p></div>
+    <div class="feature"><div class="feature-icon">🌙</div><h3 data-i18n="feat2Title">Life Cycles</h3><p data-i18n="feat2Desc">Understand the ten-year luck pillars that shape each chapter of your life.</p></div>
+    <div class="feature"><div class="feature-icon">⚡</div><h3 data-i18n="feat3Title">2026 Fortune</h3><p data-i18n="feat3Desc">See what the Year of the Horse holds in store specifically for you.</p></div>
+    <div class="feature"><div class="feature-icon">💫</div><h3 data-i18n="feat4Title">Relationships</h3><p data-i18n="feat4Desc">Uncover your ideal partner's energy and compatibility through your pillars.</p></div>
   </div>
 
   <section class="explanation">
     <div class="expl-inner">
       <div class="expl-heading">
-        <p class="tagline-sm">What is Saju?</p>
-        <h2>The Four Pillars of Destiny</h2>
+        <p class="tagline-sm" data-i18n="explSubtitle">What is Saju?</p>
+        <h2 data-i18n="explTitle">The Four Pillars of Destiny</h2>
         <div class="gold-rule"></div>
       </div>
-
       <div class="expl-body">
-        <p>
-          <em>Saju (사주)</em>, literally meaning "four pillars," is a millennia-old Korean and East Asian system of destiny analysis. At the moment of your birth, the cosmos aligned in a precise configuration — the year, month, day, and hour each produce a pillar composed of a Heavenly Stem and an Earthly Branch. Together, these eight characters, known as <em>Paljja (팔자)</em>, form the blueprint of your nature, your struggles, your gifts, and the rhythms of your life.
-        </p>
-        <p>
-          Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay of <strong>the Ten Heavenly Stems</strong> and <strong>the Twelve Earthly Branches</strong> — encoding the Five Elements (Wood, Fire, Earth, Metal, Water) and the cyclical energies of Yin and Yang into a living map of time.
-        </p>
-        <p>
-          A skilled reading reveals far more than personality. It illuminates your <em>dominant element</em> and what it means for health and temperament; your <em>ten-year luck pillars</em> (대운, Daewoon) — the great tidal currents that shape each chapter of life; your <em>annual fortune</em> (세운, Sewoon) for navigating the current year; and the energetic signature of your ideal relationships and career paths.
-        </p>
+        <p data-i18n="explP1">Saju (사주), literally meaning "four pillars," is a millennia-old Korean and East Asian system of destiny analysis...</p>
+        <p data-i18n="explP2">Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay of the Ten Heavenly Stems...</p>
+        <p data-i18n="explP3">A skilled reading reveals far more than personality. It illuminates your dominant element...</p>
       </div>
-
       <div class="expl-pillars">
-        <div class="pillar-card">
-          <div class="pillar-char">年</div>
-          <h4>Year Pillar</h4>
-          <p>Ancestral energy, early life, and the face you show the world.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-char">月</div>
-          <h4>Month Pillar</h4>
-          <p>Parents, career path, and the energy of your prime adult years.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-char">日</div>
-          <h4>Day Pillar</h4>
-          <p>Your core self — the Day Master that governs your entire chart.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-char">時</div>
-          <h4>Hour Pillar</h4>
-          <p>Inner desires, children, and the energy of your later years.</p>
-        </div>
+        <div class="pillar-card"><div class="pillar-char">年</div><h4 data-i18n="p1t">Year Pillar</h4><p data-i18n="p1d">Ancestral energy, early life, and the face you show the world.</p></div>
+        <div class="pillar-card"><div class="pillar-char">月</div><h4 data-i18n="p2t">Month Pillar</h4><p data-i18n="p2d">Parents, career path, and the energy of your prime adult years.</p></div>
+        <div class="pillar-card"><div class="pillar-char">日</div><h4 data-i18n="p3t">Day Pillar</h4><p data-i18n="p3d">Your core self — the Day Master that governs your entire chart.</p></div>
+        <div class="pillar-card"><div class="pillar-char">時</div><h4 data-i18n="p4t">Hour Pillar</h4><p data-i18n="p4d">Inner desires, children, and the energy of your later years.</p></div>
       </div>
     </div>
   </section>
 
-
   <section id="form-section">
     <div class="form-header">
-      <h2>Enter Your Birth Information</h2>
-      <p>
-        Saju requires the exact date and, ideally, the hour of your birth —
-        the four pillars that form the map of your fate.
-      </p>
+      <h2 data-i18n="formTitle">Enter Your Birth Information</h2>
+      <p data-i18n="formSubtitle">Saju requires the exact date and, ideally, the hour of your birth — the four pillars that form the map of your fate.</p>
     </div>
-
     <div class="form-card">
       <form id="saju-form" onsubmit="handleSubmit(event)">
-
         <div class="field">
-          <label>Your Name</label>
-          <input type="text" placeholder="How shall we address you?" required>
+          <label data-i18n="labelName">Name</label>
+          <input type="text" id="field-name" placeholder="First and last name" required>
         </div>
-
         <div class="field">
-          <label>Date of Birth</label>
-          <input type="date" id="birth-date" required>
+          <label data-i18n="labelRelation">Relationship</label>
+          <div class="relation-wrap">
+            <select id="field-relation">
+              <option value="self" data-i18n="rel_self">Self</option>
+              <option value="spouse" data-i18n="rel_spouse">Spouse</option>
+              <option value="partner" data-i18n="rel_partner">Partner</option>
+              <option value="parent" data-i18n="rel_parent">Parent</option>
+              <option value="child" data-i18n="rel_child">Child</option>
+              <option value="friend" data-i18n="rel_friend">Friend</option>
+              <option value="other" data-i18n="rel_other">Enter directly</option>
+            </select>
+            <input type="text" id="field-relation-custom" placeholder="Enter relationship" style="display: none; margin-top: 8px;">
+          </div>
         </div>
-
         <div class="field">
-          <label>
-            Birth Hour <span class="optional">(optional but recommended)</span>
-          </label>
+          <label data-i18n="labelDob">Date of Birth</label>
+          <div class="dob-row">
+            <input type="number" id="birth-year" placeholder="YYYY" min="1900" max="2025" maxlength="4" inputmode="numeric" required>
+            <select id="birth-month">
+              <option value="" disabled selected data-i18n="monthPlaceholder">MM</option>
+              <option value="01">01</option><option value="02">02</option><option value="03">03</option>
+              <option value="04">04</option><option value="05">05</option><option value="06">06</option>
+              <option value="07">07</option><option value="08">08</option><option value="09">09</option>
+              <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            </select>
+            <input type="number" id="birth-day" placeholder="DD" min="1" max="31" maxlength="2" inputmode="numeric" required>
+          </div>
+        </div>
+        <div class="field">
+          <label><span data-i18n="labelHour">Birth Hour</span> <span class="optional" data-i18n="hourOpt">(optional but recommended)</span></label>
           <select id="birth-hour">
-            <option value="" selected>Unknown</option>
-            <option>11 PM – 1 AM</option>
-            <option>1 AM – 3 AM</option>
-            <option>3 AM – 5 AM</option>
-            <option>5 AM – 7 AM</option>
-            <option>7 AM – 9 AM</option>
-            <option>9 AM – 11 AM</option>
-            <option>11 AM – 1 PM</option>
-            <option>1 PM – 3 PM</option>
-            <option>3 PM – 5 PM</option>
-            <option>5 PM – 7 PM</option>
-            <option>7 PM – 9 PM</option>
-            <option>9 PM – 11 PM</option>
+            <option value="" data-i18n="hourUnknown">Unknown</option>
+            <option>11 PM – 1 AM</option><option>1 AM – 3 AM</option><option>3 AM – 5 AM</option>
+            <option>5 AM – 7 AM</option><option>7 AM – 9 AM</option><option>9 AM – 11 AM</option>
+            <option>11 AM – 1 PM</option><option>1 PM – 3 PM</option><option>3 PM – 5 PM</option>
+            <option>5 PM – 7 PM</option><option>7 PM – 9 PM</option><option>9 PM – 11 PM</option>
           </select>
         </div>
-
         <div class="field">
-          <label>Gender</label>
+          <label data-i18n="labelGender">Gender</label>
           <div class="gender-row">
-            <button type="button" class="gender-btn" id="btn-male" onclick="setGender(this, 'male')">Male</button>
-            <button type="button" class="gender-btn" id="btn-female" onclick="setGender(this, 'female')">Female</button>
+            <button type="button" class="gender-btn" id="btn-male" onclick="setGender(this, 'male')" data-i18n="genderMale">Male</button>
+            <button type="button" class="gender-btn" id="btn-female" onclick="setGender(this, 'female')" data-i18n="genderFemale">Female</button>
           </div>
           <input type="hidden" id="gender-val" value="">
-          <p class="field-error" id="gender-error" style="display:none;">Please select your gender.</p>
+          <p class="field-error" id="gender-error" style="display: none;"></p>
         </div>
-
         <div class="submit-wrap">
-          <button type="submit" class="submit-btn">
-            <span>Unlock My Saju</span>
-          </button>
-          <p class="privacy-note">
-            We never store or share your personal information.
-          </p>
+          <button type="submit" class="submit-btn" id="submit-btn"><span data-i18n="submitBtn">Unlock My Saju</span></button>
+          <p class="privacy-note" data-i18n="privacy">We never store or share your personal information.</p>
         </div>
-
       </form>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 UnlockSaju · Ancient wisdom, modern insight</p>
-  </footer>
-
-  <div id="loading">
-    <div class="loading-circle"></div>
-    <p>Reading the pillars&hellip;</p>
-  </div>
-
+  <footer><p data-i18n="footer">© 2026 UnlockSaju · Ancient wisdom, modern insight</p></footer>
+  <div id="loading"><div class="loading-circle"></div><p data-i18n="loading">Reading the pillars…</p></div>
   <div id="result">
     <div class="result-card">
-      <h3>Your Destiny Awaits</h3>
-      <p>
-        Your birth chart has been received. A full Saju reading — covering your five elements,
-        dominant energy, and the fortune currents of 2025 — is being prepared for you.
-      </p>
-      <p style="margin-top:14px; color: var(--gold-light); font-size:0.85rem;">
-        (Full reading feature coming soon)
-      </p>
-      <button class="result-close" onclick="closeResult()">Close</button>
+      <h3 data-i18n="resultTitle">Your Destiny Awaits</h3>
+      <p data-i18n="resultBody">Your birth chart has been received. A full Saju reading — covering your five elements, dominant energy, and the fortune currents of 2026 — is being prepared for you.</p>
+      <p style="margin-top: 14px; color: var(--gold-light); font-size: 0.85rem;" data-i18n="resultSoon">(Full reading feature coming soon)</p>
+      <button class="result-close" onclick="closeResult()" data-i18n="resultClose">Close</button>
     </div>
   </div>
 
   <script>
+    const translations = {
+      en: {
+        popupTitle: 'Select Language', langLabel: 'English', dir: 'ltr',
+        heroTagline: '사주팔자 · The Four Pillars of Destiny', heroUnlock: 'Unlock', heroYour: 'Your', heroFate: 'Fate',
+        heroSub: 'Born at a precise moment in time, your destiny is written across eight characters — heaven and earth intertwined. Let us reveal what the cosmos inscribed at the hour of your birth.',
+        ctaBtn: 'Reveal My Destiny',
+        feat1Title: 'Five Elements', feat1Desc: 'Discover the balance of Wood, Fire, Earth, Metal & Water within your chart.',
+        feat2Title: 'Life Cycles', feat2Desc: 'Understand the ten-year luck pillars that shape each chapter of your life.',
+        feat3Title: '2026 Fortune', feat3Desc: 'See what the Year of the Horse holds in store specifically for you.',
+        feat4Title: 'Relationships', feat4Desc: 'Uncover your ideal partner\'s energy and compatibility through your pillars.',
+        explSubtitle: 'What is Saju?', explTitle: 'The Four Pillars of Destiny',
+        explP1: 'Saju (사주), literally meaning "four pillars," is a millennia-old Korean and East Asian system of destiny analysis. At the moment of your birth, the cosmos aligned in a precise configuration — the year, month, day, and hour each produce a pillar composed of a Heavenly Stem and an Earthly Branch. Together, these eight characters, known as Paljja (팔자), form the blueprint of your nature, your struggles, your gifts, and the rhythms of your life.',
+        explP2: 'Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay of the Ten Heavenly Stems and the Twelve Earthly Branches — encoding the Five Elements (Wood, Fire, Earth, Metal, Water) and the cyclical energies of Yin and Yang into a living map of time.',
+        explP3: 'A skilled reading reveals far more than personality. It illuminates your dominant element and what it means for health and temperament; your ten-year luck pillars (대운, Daewoon) — the great tidal currents that shape each chapter of life; your annual fortune (세운, Sewoon) for navigating the current year; and the energetic signature of your ideal relationships and career paths.',
+        p1t: 'Year Pillar', p1d: 'Ancestral energy, early life, and the face you show the world.',
+        p2t: 'Month Pillar', p2d: 'Parents, career path, and the energy of your prime adult years.',
+        p3t: 'Day Pillar', p3d: 'Your core self — the Day Master that governs your entire chart.',
+        p4t: 'Hour Pillar', p4d: 'Inner desires, children, and the energy of your later years.',
+        formTitle: 'Enter Your Birth Information', formSubtitle: 'Saju requires the exact date and, ideally, the hour of your birth — the four pillars that form the map of your fate.',
+        labelName: 'Name', placeholder: 'First and last name',
+        labelRelation: 'Relationship', rel_self: 'Self', rel_spouse: 'Spouse', rel_partner: 'Partner', rel_parent: 'Parent', rel_child: 'Child', rel_friend: 'Friend', rel_other: 'Enter directly',
+        labelDob: 'Date of Birth', monthPlaceholder: 'MM', dobDay: 'DD', labelHour: 'Birth Hour', hourOpt: '(optional but recommended)', hourUnknown: 'Unknown',
+        labelGender: 'Gender', genderMale: 'Male', genderFemale: 'Female', genderError: 'Please select your gender.',
+        submitBtn: 'Unlock My Saju', privacy: 'We never store or share your personal information.',
+        footer: '© 2026 UnlockSaju · Ancient wisdom, modern insight',
+        loading: 'Reading the pillars…',
+        resultTitle: 'Your Destiny Awaits', resultBody: 'Your birth chart has been received. A full Saju reading — covering your five elements, dominant energy, and the fortune currents of 2026 — is being prepared for you.',
+        resultSoon: '(Full reading feature coming soon)', resultClose: 'Close',
+      },
+      zh: {
+        popupTitle: '选择语言', langLabel: '中文 (简体)', dir: 'ltr',
+        heroTagline: '사주팔자 · 四柱命理', heroUnlock: '解锁', heroYour: '你的', heroFate: '命运',
+        heroSub: '你诞生于一个精确的时刻，命运书写在八个字之中——天地交织。让我们揭示宇宙在你出生那一刻所铭刻的一切。',
+        ctaBtn: '揭示我的命运',
+        feat1Title: '五行', feat1Desc: '探索你命盘中木、火、土、金、水的平衡关系。',
+        feat2Title: '人生周期', feat2Desc: '了解塑造你生命每个篇章的十年大运。',
+        feat3Title: '2026年运', feat3Desc: '看看马年究竟为你准备了什么。',
+        feat4Title: '感情关系', feat4Desc: '通过你的四柱揭示理想伴侣的能量与契合度。',
+        explSubtitle: '什么是四柱？', explTitle: '四柱命理',
+        explP1: '四柱，字面意思为"四根支柱"，是一套已有数千年历史的韩国及东亚命运分析体系。在你出生的那一刻，宇宙以精确的排列对齐——年、月、日、时各产生一根由天干和地支组成的柱。这八个字，即"八字"，构成了你的性格、挣扎、天赋以及人生节奏的蓝图。',
+        explP2: '与强调行星位置的西方占星不同，四柱命理源自十天干与十二地支的相互作用——将五行（木、火、土、金、水）和阴阳的循环能量编织成一幅活生生的时间地图。',
+        explP3: '精准的解读远不止于性格分析。它揭示你的主导五行及其对健康与气质的影响；你的大运——塑造人生每个阶段的宏观潮流；以及帮助你驾驭当前年份的流年运势，还有你理想关系与职业道路的能量印记。',
+        p1t: '年柱', p1d: '祖先能量、童年早期以及你向世界展示的面貌。',
+        p2t: '月柱', p2d: '父母、职业方向以及壮年时期的能量。',
+        p3t: '日柱', p3d: '你的核心自我——主宰整个命盘的日主。',
+        p4t: '时柱', p4d: '内心欲望、子女以及晚年的能量。',
+        formTitle: '输入你的出生信息', formSubtitle: '四柱命理需要你准确的出生日期，以及出生时辰——构成命运地图的四根支柱。',
+        labelName: '姓名', placeholder: '请输入姓名',
+        labelRelation: '关系', rel_self: '本人', rel_spouse: '配偶', rel_partner: '恋人', rel_parent: '父母', rel_child: '子女', rel_friend: '朋友', rel_other: '直接输入',
+        labelDob: '出生日期', monthPlaceholder: '月', dobDay: '日', labelHour: '出生时辰', hourOpt: '（可选，建议填写）', hourUnknown: '不知道',
+        labelGender: '性别', genderMale: '男', genderFemale: '女', genderError: '请选择你的性别。',
+        submitBtn: '解锁我的四柱', privacy: '我们不会存储或分享你的个人信息。',
+        footer: '© 2026 UnlockSaju · 古老智慧，现代洞见',
+        loading: '正在解读四柱……',
+        resultTitle: '你的命运即将揭晓', resultBody: '你的命盘已收到。涵盖五行、主导能量以及2026年运势的完整四柱解读正在为你准备中。',
+        resultSoon: '（完整解读功能即将上线）', resultClose: '关闭',
+      },
+      hi: {
+        popupTitle: 'भाषा चुनें', langLabel: 'हिन्दी', dir: 'ltr',
+        heroTagline: '사주팔자 · भाग्य के चार स्तंभ', heroUnlock: 'उजागर करें', heroYour: 'आपका', heroFate: 'भाग्य',
+        heroSub: 'एक सटीक पल में जन्मे, आपका भाग्य आठ अक्षरों में लिखा है — स्वर्ग और पृथ्वी का संगम। आइए जानें कि ब्रह्मांड ने आपके जन्म के क्षण में क्या अंकित किया।',
+        ctaBtn: 'मेरा भाग्य प्रकट करें',
+        feat1Title: 'पाँच तत्व', feat1Desc: 'अपने चार्ट में लकड़ी, अग्नि, पृथ्वी, धातु और जल के संतुलन को खोजें।',
+        feat2Title: 'जीवन चक्र', feat2Desc: 'उन दस-वर्षीय भाग्य स्तंभों को समझें जो आपके जीवन के हर अध्याय को आकार देते हैं।',
+        feat3Title: '2026 का भाग्य', feat3Desc: 'देखें कि घोड़े का वर्ष आपके लिए क्या लेकर आया है।',
+        feat4Title: 'रिश्ते', feat4Desc: 'अपने चार स्तंभों के माध्यम से आदर्श साथी की ऊर्जा और अनुकूलता को उजागर करें।',
+        explSubtitle: 'साजू क्या है?', explTitle: 'भाग्य के चार स्तंभ',
+        explP1: 'साजू (사주), जिसका शाब्दिक अर्थ है "चार स्तंभ," एक हजारों साल पुरानी कोरियाई और पूर्वी एशियाई भाग्य विश्लेषण प्रणाली है। जन्म के क्षण में, ब्रह्मांड एक सटीक संरचना में संरेखित था — वर्ष, माह, दिन और घंटा प्रत्येक एक स्वर्गीय तना और एक सांसारिक शाखा से मिलकर एक स्तंभ बनाते हैं। ये आठ अक्षर, जिन्हें पलजा (팔자) कहा जाता है, आपके स्वभाव, संघर्षों, प्रतिभाओं और जीवन की लय का खाका बनाते हैं।',
+        explP2: 'पश्चिमी ज्योतिष के विपरीत, जो ग्रहों की स्थिति पर जोर देता है, साजू दस स्वर्गीय तनों और बारह सांसारिक शाखाओं की परस्पर क्रिया से उत्पन्न होता है — पाँच तत्वों और यिन-यांग की चक्रीय ऊर्जाओं को समय के एक जीवंत मानचित्र में संकूचित करते हुए।',
+        explP3: 'एक कुशल पाठन व्यक्तित्व से बहुत अधिक प्रकट करता है। यह आपके प्रमुख तत्व और स्वास्थ्य-स्वभाव पर उसके प्रभाव को उजागर करता है; आपके दस-वर्षीय भाग्य स्तंभ; वर्तमान वर्ष के लिए आपकी वार्षिक किस्मत; और आपके आदर्श रिश्तों तथा करियर पथ की ऊर्जा।',
+        p1t: 'वर्ष स्तंभ', p1d: 'पैतृक ऊर्जा, प्रारंभिक जीवन और वह चेहरा जो आप दुनिया को दिखाते हैं।',
+        p2t: 'माह स्तंभ', p2d: 'माता-पिता, करियर पथ और प्रमुख वयस्क वर्षों की ऊर्जा।',
+        p3t: 'दिन स्तंभ', p3d: 'आपका मूल स्व — दिन का स्वामी जो पूरे चार्ट को नियंत्रित करता है।',
+        p4t: 'घंटा स्तंभ', p4d: 'आंतरिक इच्छाएँ, बच्चे और बाद के वर्षों की ऊर्जा।',
+        formTitle: 'अपनी जन्म जानकारी दर्ज करें', formSubtitle: 'साजू के लिए आपकी सटीक जन्म तिथि और जन्म का समय आवश्यक है — चार स्तंभ जो आपके भाग्य का नक्शा बनाते हैं।',
+        labelName: 'नाम', placeholder: 'पूरा नाम दर्ज करें',
+        labelRelation: 'संबंध', rel_self: 'स्वयं', rel_spouse: 'जीवनसाथी', rel_partner: 'साथी', rel_parent: 'माता-पिता', rel_child: 'बच्चा', rel_friend: 'मित्र', rel_other: 'सीधे दर्ज करें',
+        labelDob: 'जन्म तिथि', monthPlaceholder: 'माह', dobDay: 'दिन', labelHour: 'जन्म समय', hourOpt: '(वैकल्पिक, अनुशंसित)', hourUnknown: 'अज्ञात',
+        labelGender: 'लिंग', genderMale: 'पुरुष', genderFemale: 'महिला', genderError: 'कृपया अपना लिंग चुनें।',
+        submitBtn: 'मेरा साजू अनलॉक करें', privacy: 'हम आपकी व्यक्तिगत जानकारी कभी संग्रहीत या साझा नहीं करते।',
+        footer: '© 2026 UnlockSaju · प्राचीन ज्ञान, आधुनिक अंतर्दृष्टि',
+        loading: 'स्तंभ पढ़े जा रहे हैं…',
+        resultTitle: 'आपका भाग्य प्रतीक्षा में है', resultBody: 'आपका जन्म चार्ट प्राप्त हो गया है। 2026 के भाग्य प्रवाह को कवर करने वाला पूर्ण साजू पाठन तैयार किया जा रहा है।',
+        resultSoon: '(पूर्ण पाठन सुविधा शीघ्र आ रही है)', resultClose: 'बंद करें',
+      },
+      es: {
+        popupTitle: 'Seleccionar idioma', langLabel: 'Español', dir: 'ltr',
+        heroTagline: '사주팔자 · Los Cuatro Pilares del Destino', heroUnlock: 'Descubre', heroYour: 'Tu', heroFate: 'Destino',
+        heroSub: 'Nacido en un momento preciso, tu destino está escrito en ocho caracteres — cielo y tierra entrelazados. Permítenos revelar lo que el cosmos inscribió en la hora de tu nacimiento.',
+        ctaBtn: 'Revelar Mi Destino',
+        feat1Title: 'Cinco Elementos', feat1Desc: 'Descubre el equilibrio de Madera, Fuego, Tierra, Metal y Agua en tu carta.',
+        feat2Title: 'Ciclos de Vida', feat2Desc: 'Comprende los pilares de suerte de diez años que moldean cada capítulo de tu vida.',
+        feat3Title: 'Fortuna 2026', feat3Desc: 'Descubre lo que el Año del Caballo tiene reservado específicamente para ti.',
+        feat4Title: 'Relaciones', feat4Desc: 'Desvela la energía de tu pareja ideal y su compatibilidad a través de tus pilares.',
+        explSubtitle: '¿Qué es el Saju?', explTitle: 'Los Cuatro Pilares del Destino',
+        explP1: 'Saju (사주), que significa literalmente "cuatro pilares", es un sistema milenario coreano y del este asiático de análisis del destino. En el momento de tu nacimiento, el cosmos se alineó en una configuración precisa — el año, el mes, el día y la hora producen cada uno un pilar compuesto por un Tronco Celestial y una Rama Terrestre. Estos ocho caracteres, conocidos como Paljja (팔자), forman el plano de tu naturaleza, tus luchas, tus dones y los ritmos de tu vida.',
+        explP2: 'A diferencia de la astrología occidental, que enfatiza la posición de los planetas, el Saju se nutre de la interacción de los Diez Troncos Celestiales y las Doce Ramas Terrestres — codificando los Cinco Elementos y las energías cíclicas del Yin y el Yang en un mapa vivo del tiempo.',
+        explP3: 'Una lectura experta revela mucho más que la personalidad. Ilumina tu elemento dominante y lo que significa para la salud y el temperamento; tus pilares de suerte decenales — las grandes corrientes que moldean cada capítulo de la vida; tu fortuna anual para navegar el año actual; y la firma energética de tus relaciones e itinerario profesional ideal.',
+        p1t: 'Pilar del Año', p1d: 'Energía ancestral, vida temprana y el rostro que muestras al mundo.',
+        p2t: 'Pilar del Mes', p2d: 'Padres, trayectoria profesional y la energía de tus mejores años adultos.',
+        p3t: 'Pilar del Día', p3d: 'Tu ser esencial — el Maestro del Día que rige toda tu carta.',
+        p4t: 'Pilar de la Hora', p4d: 'Deseos internos, hijos y la energía de tus últimos años.',
+        formTitle: 'Ingresa tu información de nacimiento', formSubtitle: 'El Saju requiere la fecha exacta y, idealmente, la hora de tu nacimiento — los cuatro pilares que forman el mapa de tu destino.',
+        labelName: 'Nombre', placeholder: 'Nombre y apellido',
+        labelRelation: 'Relación', rel_self: 'Yo mismo', rel_spouse: 'Cónyuge', rel_partner: 'Pareja', rel_parent: 'Padre/Madre', rel_child: 'Hijo/a', rel_friend: 'Amigo/a', rel_other: 'Ingresar directamente',
+        labelDob: 'Fecha de nacimiento', monthPlaceholder: 'MM', dobDay: 'DD', labelHour: 'Hora de nacimiento', hourOpt: '(opcional pero recomendada)', hourUnknown: 'Desconocida',
+        labelGender: 'Género', genderMale: 'Masculino', genderFemale: 'Femenino', genderError: 'Por favor, selecciona tu género.',
+        submitBtn: 'Desbloquear Mi Saju', privacy: 'Nunca almacenamos ni compartimos tu información personal.',
+        footer: '© 2026 UnlockSaju · Sabiduría ancestral, visión moderna',
+        loading: 'Leyendo los pilares…',
+        resultTitle: 'Tu destino te aguarda', resultBody: 'Tu carta natal ha sido recibida. Se está preparando una lectura completa del Saju que cubre tus cinco elementos, energía dominante y las corrientes de fortuna de 2026.',
+        resultSoon: '(Función de lectura completa próximamente)', resultClose: 'Cerrar',
+      },
+      fr: {
+        popupTitle: 'Choisir la langue', langLabel: 'Français', dir: 'ltr',
+        heroTagline: '사주팔자 · Les Quatre Piliers du Destin', heroUnlock: 'Révélez', heroYour: 'Votre', heroFate: 'Destin',
+        heroSub: 'Né à un instant précis, votre destin est inscrit en huit caractères — ciel et terre entrelacés. Laissez-nous révéler ce que le cosmos a gravé à l\'heure de votre naissance.',
+        ctaBtn: 'Révéler Mon Destin',
+        feat1Title: 'Cinq Éléments', feat1Desc: 'Découvrez l\'équilibre du Bois, du Feu, de la Terre, du Métal et de l\'Eau dans votre thème.',
+        feat2Title: 'Cycles de Vie', feat2Desc: 'Comprenez les piliers de chance décennaux qui façonnent chaque chapitre de votre vie.',
+        feat3Title: 'Fortune 2026', feat3Desc: 'Découvrez ce que l\'Année du Cheval vous réserve.',
+        feat4Title: 'Relations', feat4Desc: 'Révélez l\'énergie de votre partenaire idéal et votre compatibilité à travers vos piliers.',
+        explSubtitle: 'Qu\'est-ce que le Saju ?', explTitle: 'Les Quatre Piliers du Destin',
+        explP1: 'Le Saju (사주), qui signifie littéralement « quatre piliers », est un système millénaire coréen et est-asiatique d\'analyse du destin. Au moment de votre naissance, le cosmos s\'est aligné dans une configuration précise — l\'année, le mois, le jour et l\'heure produisent chacun un pilier composé d\'une Tige Céleste et d\'une Branche Terrestre. Ces huit caractères, connus sous le nom de Paljja (팔자), constituent le plan de votre nature, de vos épreuves, de vos dons et des rythmes de votre vie.',
+        explP2: 'Contrairement à l\'astrologie occidentale, qui met l\'accent sur la position des planètes, le Saju puise dans l\'interaction des Dix Tiges Célestes et des Douze Branches Terrestres — encodant les Cinq Éléments et les énergies cycliques du Yin et du Yang dans une carte vivante du temps.',
+        explP3: 'Une lecture habile révèle bien plus que la personnalité. Elle éclaire votre élément dominant et ce qu\'il signifie pour la santé et le tempérament ; vos piliers de chance décennaux — les grands courants qui façonnent chaque chapitre de la vie ; votre fortune annuelle pour naviguer l\'année en cours ; et la signature énergétique de vos relations et parcours professionnels idéaux.',
+        p1t: 'Pilier de l\'Année', p1d: 'Énergie ancestrale, petite enfance et le visage que vous montrez au monde.',
+        p2t: 'Pilier du Mois', p2d: 'Parents, trajectoire professionnelle et énergie de vos meilleures années adultes.',
+        p3t: 'Pilier du Jour', p3d: 'Votre être profond — le Maître du Jour qui régit l\'ensemble de votre thème.',
+        p4t: 'Pilier de l\'Heure', p4d: 'Désirs intérieurs, enfants et énergie de vos dernières années.',
+        formTitle: 'Entrez vos informations de naissance', formSubtitle: 'Le Saju requiert la date exacte et, idéalement, l\'heure de votre naissance — les quatre piliers qui forment la carte de votre destin.',
+        labelName: 'Nom', placeholder: 'Prénom et nom de famille',
+        labelRelation: 'Relation', rel_self: 'Moi-même', rel_spouse: 'Conjoint(e)', rel_partner: 'Partenaire', rel_parent: 'Parent', rel_child: 'Enfant', rel_friend: 'Ami(e)', rel_other: 'Saisir directement',
+        labelDob: 'Date de naissance', monthPlaceholder: 'MM', dobDay: 'JJ', labelHour: 'Heure de naissance', hourOpt: '(facultatif mais recommandé)', hourUnknown: 'Inconnue',
+        labelGender: 'Genre', genderMale: 'Masculin', genderFemale: 'Féminin', genderError: 'Veuillez sélectionner votre genre.',
+        submitBtn: 'Déverrouiller Mon Saju', privacy: 'Nous ne stockons ni ne partageons jamais vos informations personnelles.',
+        footer: '© 2026 UnlockSaju · Sagesse ancienne, perspicacité moderne',
+        loading: 'Lecture des piliers…',
+        resultTitle: 'Votre destin vous attend', resultBody: 'Votre thème natal a bien été reçu. Une lecture complète du Saju couvrant vos cinq éléments, votre énergie dominante et les courants de fortune de 2026 est en cours de préparation.',
+        resultSoon: '(Fonctionnalité de lecture complète bientôt disponible)', resultClose: 'Fermer',
+      },
+      ar: {
+        popupTitle: 'اختر اللغة', langLabel: 'العربية', dir: 'rtl',
+        heroTagline: '사주팔자 · الأعمدة الأربعة للقدر', heroUnlock: 'اكشف', heroYour: 'عن', heroFate: 'قدرك',
+        heroSub: 'وُلدتَ في لحظة دقيقة، وقدرك مكتوب في ثمانية أحرف — السماء والأرض متشابكتان. دعنا نكشف ما نقشه الكون في ساعة ميلادك.',
+        ctaBtn: 'اكشف عن قدري',
+        feat1Title: 'العناصر الخمسة', feat1Desc: 'اكتشف توازن الخشب والنار والأرض والمعدن والماء في مخططك.',
+        feat2Title: 'دورات الحياة', feat2Desc: 'افهم أعمدة الحظ العشرية التي تشكّل كل فصل من فصول حياتك.',
+        feat3Title: 'حظ 2026', feat3Desc: 'اكتشف ما يخبئه عام الحصان لك تحديداً.',
+        feat4Title: 'العلاقات', feat4Desc: 'اكشف عن طاقة شريكك المثالي وتوافقكما من خلال أعمدتك.',
+        explSubtitle: 'ما هو الساجو؟', explTitle: 'الأعمدة الأربعة للقدر',
+        explP1: 'الساجو (사주)، الذي يعني حرفياً "أربعة أعمدة"، هو نظام كوري وشرق آسيوي عمره آلاف السنين لتحليل المصير. في لحظة ولادتك، انتظم الكون في تشكيل دقيق — السنة والشهر واليوم والساعة تنتج كلٌّ منها عموداً مؤلفاً من ساق سماوية وفرع أرضي. هذه الأحرف الثمانية، المعروفة بـ بالجا (팔자)، تُشكّل مخطط طبيعتك وصراعاتك ومواهبك وإيقاعات حياتك.',
+        explP2: 'على عكس علم التنجيم الغربي الذي يُركّز على مواضع الكواكب، يستمد الساجو طاقته من تفاعل العشرة سيقان السماوية والاثني عشر فرعاً أرضياً — مُضمِّناً العناصر الخمسة وطاقات الين واليانغ الدورية في خريطة حية للزمن.',
+        explP3: 'تكشف القراءة الماهرة عن أكثر بكثير من الشخصية. فهي تُنير عنصرك السائد وما يعنيه للصحة والمزاج؛ وأعمدة حظك العشرية — التيارات الكبرى التي تُشكّل كل فصل من فصول الحياة؛ وحظك السنوي للتنقل في العام الحالي؛ والبصمة الطاقية لعلاقاتك ومساراتك المهنية المثالية.',
+        p1t: 'عمود السنة', p1d: 'الطاقة السلفية والحياة المبكرة والوجه الذي تُظهره للعالم.',
+        p2t: 'عمود الشهر', p2d: 'الوالدان والمسار المهني وطاقة سنوات شبابك.',
+        p3t: 'عمود اليوم', p3d: 'جوهر ذاتك — سيد اليوم الذي يتحكم في مخططك بالكامل.',
+        p4t: 'عمود الساعة', p4d: 'الرغبات الداخلية والأبناء وطاقة سنواتك اللاحقة.',
+        formTitle: 'أدخل معلومات ميلادك', formSubtitle: 'يتطلب الساجو التاريخ الدقيق للميلاد ومثالياً ساعة الميلاد — الأعمدة الأربعة التي تُشكّل خريطة قدرك.',
+        labelName: 'الاسم', placeholder: 'الاسم الأول والأخير',
+        labelRelation: 'العلاقة', rel_self: 'أنا', rel_spouse: 'الزوج/الزوجة', rel_partner: 'الشريك', rel_parent: 'أحد الوالدين', rel_child: 'الطفل', rel_friend: 'صديق', rel_other: 'إدخال مباشر',
+        labelDob: 'تاريخ الميلاد', monthPlaceholder: 'شهر', dobDay: 'يوم', labelHour: 'ساعة الميلاد', hourOpt: '(اختياري لكن مُوصى به)', hourUnknown: 'غير معروف',
+        labelGender: 'الجنس', genderMale: 'ذكر', genderFemale: 'أنثى', genderError: 'يرجى تحديد جنسك.',
+        submitBtn: 'افتح ساجوي', privacy: 'لا نقوم أبداً بتخزين معلوماتك الشخصية أو مشاركتها.',
+        footer: '© 2026 UnlockSaju · حكمة قديمة، بصيرة حديثة',
+        loading: 'جارٍ قراءة الأعمدة…',
+        resultTitle: 'قدرك في انتظارك', resultBody: 'تم استلام مخطط ميلادك. جارٍ تحضير قراءة ساجو كاملة تشمل عناصرك الخمسة وطاقتك السائدة وتيارات حظ عام 2026.',
+        resultSoon: '(ميزة القراءة الكاملة قريباً)', resultClose: 'إغلاق',
+      },
+      pt: {
+        popupTitle: 'Selecionar idioma', langLabel: 'Português', dir: 'ltr',
+        heroTagline: '사주팔자 · Os Quatro Pilares do Destino', heroUnlock: 'Revele', heroYour: 'Seu', heroFate: 'Destino',
+        heroSub: 'Nascido num momento preciso, seu destino está escrito em oito caracteres — céu e terra entrelaçados. Deixe-nos revelar o que o cosmos inscreveu na hora do seu nascimento.',
+        ctaBtn: 'Revelar Meu Destino',
+        feat1Title: 'Cinco Elementos', feat1Desc: 'Descubra o equilíbrio de Madeira, Fogo, Terra, Metal e Água no seu mapa.',
+        feat2Title: 'Ciclos de Vida', feat2Desc: 'Compreenda os pilares de sorte decenais que moldam cada capítulo da sua vida.',
+        feat3Title: 'Fortuna 2026', feat3Desc: 'Veja o que o Ano do Cavalo reserva especialmente para você.',
+        feat4Title: 'Relacionamentos', feat4Desc: 'Descubra a energia do seu parceiro ideal e a compatibilidade através dos seus pilares.',
+        explSubtitle: 'O que é o Saju?', explTitle: 'Os Quatro Pilares do Destino',
+        explP1: 'Saju (사주), literalmente "quatro pilares", é um sistema milenar coreano e do Leste Asiático de análise do destino. No momento do seu nascimento, o cosmos se alinhou numa configuração precisa — o ano, o mês, o dia e a hora produzem cada um um pilar composto por um Tronco Celestial e um Ramo Terrestre. Esses oito caracteres, conhecidos como Paljja (팔자), formam o mapa da sua natureza, suas lutas, seus dons e os ritmos da sua vida.',
+        explP2: 'Ao contrário da astrologia ocidental, que enfatiza a posição dos planetas, o Saju baseia-se na interação dos Dez Troncos Celestiais e dos Doze Ramos Terrestres — codificando os Cinco Elementos e as energias cíclicas do Yin e do Yang num mapa vivo do tempo.',
+        explP3: 'Uma leitura habilidosa revela muito mais do que personalidade. Ela ilumina seu elemento dominante e o que ele significa para a saúde e o temperamento; seus pilares de sorte decenais — as grandes correntes que moldam cada capítulo da vida; sua fortuna anual para navegar o ano atual; e a assinatura energética dos seus relacionamentos e caminhos profissionais ideais.',
+        p1t: 'Pilar do Ano', p1d: 'Energia ancestral, infância e o rosto que você mostra ao mundo.',
+        p2t: 'Pilar do Mês', p2d: 'Pais, trajetória profissional e a energia dos seus melhores anos adultos.',
+        p3t: 'Pilar do Dia', p3d: 'Seu ser essencial — o Mestre do Dia que rege todo o seu mapa.',
+        p4t: 'Pilar da Hora', p4d: 'Desejos internos, filhos e a energia dos seus anos posteriores.',
+        formTitle: 'Insira suas informações de nascimento', formSubtitle: 'O Saju requer a data exata e, idealmente, a hora do seu nascimento — os quatro pilares que formam o mapa do seu destino.',
+        labelName: 'Nome', placeholder: 'Nome completo',
+        labelRelation: 'Relacionamento', rel_self: 'Eu mesmo', rel_spouse: 'Cônjuge', rel_partner: 'Parceiro(a)', rel_parent: 'Pai/Mãe', rel_child: 'Filho(a)', rel_friend: 'Amigo(a)', rel_other: 'Inserir diretamente',
+        labelDob: 'Data de nascimento', monthPlaceholder: 'MÊS', dobDay: 'DD', labelHour: 'Hora de nascimento', hourOpt: '(opcional, mas recomendada)', hourUnknown: 'Desconhecida',
+        labelGender: 'Gênero', genderMale: 'Masculino', genderFemale: 'Feminino', genderError: 'Por favor, selecione seu gênero.',
+        submitBtn: 'Desbloquear Meu Saju', privacy: 'Nunca armazenamos nem compartilhamos suas informações pessoais.',
+        footer: '© 2026 UnlockSaju · Sabedoria ancestral, perspectiva moderna',
+        loading: 'Lendo os pilares…',
+        resultTitle: 'Seu Destino Aguarda', resultBody: 'Seu mapa natal foi recebido. Uma leitura completa do Saju abrangendo seus cinco elementos, energia dominante e as correntes de fortuna de 2026 está sendo preparada para você.',
+        resultSoon: '(Recurso de leitura completa em breve)', resultClose: 'Fechar',
+      },
+      ru: {
+        popupTitle: 'Выбрать язык', langLabel: 'Русский', dir: 'ltr',
+        heroTagline: '사주팔자 · Четыре Столпа Судьбы', heroUnlock: 'Раскройте', heroYour: 'Вашу', heroFate: 'Судьбу',
+        heroSub: 'Рождённый в точный миг, ваша судьба начертана в восьми знаках — небо и земля переплелись воедино. Позвольте нам открыть то, что космос запечатлел в час вашего рождения.',
+        ctaBtn: 'Раскрыть Мою Судьбу',
+        feat1Title: 'Пять Стихий', feat1Desc: 'Откройте баланс Дерева, Огня, Земли, Металла и Воды в вашей карте.',
+        feat2Title: 'Жизненные Циклы', feat2Desc: 'Поймите десятилетние столпы удачи, формирующие каждую главу вашей жизни.',
+        feat3Title: 'Фортуна 2026', feat3Desc: 'Узнайте, что приготовил вам Год Лошади.',
+        feat4Title: 'Отношения', feat4Desc: 'Раскройте энергию идеального партнёра и совместимость через ваши столпы.',
+        explSubtitle: 'Что такое Саджу?', explTitle: 'Четыре Столпа Судьбы',
+        explP1: 'Саджу (사주), буквально «четыре столпа» — тысячелетняя корейская и восточноазиатская система анализа судьбы. В момент вашего рождения космос выстроился в точную конфиг��рацию: год, месяц, день и час образуют столп из Небесного Ствола и Земной Ветви. Эти восемь знаков, известные как Палджа (팔자), составляют план вашей природы, испытаний, даров и ритмов жизни.',
+        explP2: 'В отличие от западной астрологии, акцентирующей положение планет, Саджу опирается на взаимодействие Десяти Небесных Стволов и Двенадцати Земных Ветвей — кодируя Пять Стихий и циклические энергии Инь и Ян в живую карту времени.',
+        explP3: 'Опытное прочтение раскрывает куда больше, чем личность. Оно освещает вашу ведущую стихию и её влияние на здоровье и темперамент; ваши десятилетние столпы удачи — великие потоки, формирующие каждую главу жизни; вашу ежегодную фортуну для навигации в текущем году; и энергетическую подпись ваших идеальных отношений и карьерных путей.',
+        p1t: 'Столп Года', p1d: 'Энергия предков, раннее детство и лицо, которое вы показываете миру.',
+        p2t: 'Столп Месяца', p2d: 'Родители, карьерный путь и энергия лучших взрослых лет.',
+        p3t: 'Столп Дня', p3d: 'Ваше истинное я — Хозяин Дня, управляющий всей картой.',
+        p4t: 'Столп Часа', p4d: 'Внутренние желания, дети и энергия поздних лет жизни.',
+        formTitle: 'Введите информацию о рождении', formSubtitle: 'Для Саджу необходима точная дата и, в идеале, час рождения — четыре столпа, формирующие карту вашей судьбы.',
+        labelName: 'Имя', placeholder: 'Имя и фамилия',
+        labelRelation: 'Отношение', rel_self: 'Я сам', rel_spouse: 'Супруг(а)', rel_partner: 'Партнёр', rel_parent: 'Родитель', rel_child: 'Ребёнок', rel_friend: 'Друг', rel_other: 'Ввести вручную',
+        labelDob: 'Дата рождения', monthPlaceholder: 'МЕСЯЦ', dobDay: 'ДД', labelHour: 'Час рождения', hourOpt: '(необязательно, но рекомендуется)', hourUnknown: 'Неизвестно',
+        labelGender: 'Пол', genderMale: 'Мужской', genderFemale: 'Женский', genderError: 'Пожалуйста, выберите пол.',
+        submitBtn: 'Разблокировать Мой Саджу', privacy: 'Мы никогда не храним и не передаём ваши личные данные.',
+        footer: '© 2026 UnlockSaju · Древняя мудрость, современное видение',
+        loading: 'Читаем столпы…',
+        resultTitle: 'Ваша судьба ждёт', resultBody: 'Ваша натальная карта получена. Полное прочтение Саджу, охватывающее пять стихий, ведущую энергию и потоки удачи 2026 года, готовится для вас.',
+        resultSoon: '(Функция полного прочтения скоро появится)', resultClose: 'Закрыть',
+      },
+    };
+
+    let currentLang = 'en';
+    let selectedGender = '';
+
+    function updateTranslations(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      document.documentElement.dir = t.dir;
+      document.documentElement.lang = lang;
+      currentLang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+
+      document.getElementById('field-name').placeholder = t.placeholder;
+      document.getElementById('birth-year').placeholder = t.labelDob === 'Date of Birth' ? 'YYYY' : t.dobYear || 'YYYY';
+      document.getElementById('birth-day').placeholder = t.dobDay || 'DD';
+      document.getElementById('field-relation-custom').placeholder = t.formSubtitle ? 'Enter relationship' : 'Enter relationship';
+      document.getElementById('gender-error').textContent = t.genderError;
+    }
+
+    document.getElementById('field-relation').addEventListener('change', function() {
+      const custom = document.getElementById('field-relation-custom');
+      custom.style.display = this.value === 'other' ? 'block' : 'none';
+      if (this.value === 'other') custom.focus();
+    });
+
     function toggleLang() {
       const btn = document.getElementById('lang-btn');
-      const overlay = document.getElementById('lang-overlay');
-      const isOpen = overlay.classList.contains('open');
-      if (isOpen) {
-        overlay.classList.remove('open');
+      const ov = document.getElementById('lang-overlay');
+      const open = ov.classList.contains('open');
+      if (open) {
+        ov.classList.remove('open');
         btn.classList.remove('open');
       } else {
-        overlay.classList.add('open');
+        ov.classList.add('open');
         btn.classList.add('open');
       }
     }
 
     function closeLangOnOverlay(e) {
-      if (e.target === document.getElementById('lang-overlay')) {
-        document.getElementById('lang-overlay').classList.remove('open');
-        document.getElementById('lang-btn').classList.remove('open');
-      }
+      if (e.target === document.getElementById('lang-overlay')) toggleLang();
     }
 
-    function selectLang(el, code, name) {
+    function selectLang(el, lang) {
       document.querySelectorAll('.lang-tile').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
-      document.getElementById('lang-label').textContent = code;
       document.getElementById('lang-overlay').classList.remove('open');
       document.getElementById('lang-btn').classList.remove('open');
+      updateTranslations(lang);
     }
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         document.getElementById('lang-overlay').classList.remove('open');
         document.getElementById('lang-btn').classList.remove('open');
@@ -804,8 +1352,6 @@
     function scrollToForm() {
       document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
     }
-
-    let selectedGender = '';
 
     function setGender(btn, val) {
       document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
@@ -824,37 +1370,64 @@
       e.preventDefault();
       let valid = true;
 
-      const name = document.querySelector('input[type="text"]');
-      const birthDate = document.getElementById('birth-date');
-      const genderVal = document.getElementById('gender-val').value;
+      const name = document.getElementById('field-name');
+      const byear = document.getElementById('birth-year');
+      const bmonth = document.getElementById('birth-month');
+      const bday = document.getElementById('birth-day');
+      const submitBtn = document.getElementById('submit-btn');
 
-      [name, birthDate].forEach(el => {
-        el.classList.remove('input-error');
-        if (!el.value.trim()) {
-          el.classList.add('input-error');
-          el.addEventListener('input', () => el.classList.remove('input-error'), { once: true });
-          valid = false;
-        }
-      });
+      name.classList.remove('input-error');
+      if (!name.value.trim()) {
+        name.classList.add('input-error');
+        name.addEventListener('input', () => name.classList.remove('input-error'), { once: true });
+        valid = false;
+      }
 
-      if (!genderVal) {
+      byear.classList.remove('input-error');
+      const yr = parseInt(byear.value, 10);
+      if (!byear.value || byear.value.length !== 4 || isNaN(yr) || yr < 1900 || yr > 2025) {
+        byear.classList.add('input-error');
+        byear.addEventListener('input', () => byear.classList.remove('input-error'), { once: true });
+        valid = false;
+      }
+
+      bmonth.classList.remove('input-error');
+      if (!bmonth.value) {
+        bmonth.classList.add('input-error');
+        bmonth.addEventListener('change', () => bmonth.classList.remove('input-error'), { once: true });
+        valid = false;
+      }
+
+      bday.classList.remove('input-error');
+      const dy = parseInt(bday.value, 10);
+      if (!bday.value || isNaN(dy) || dy < 1 || dy > 31) {
+        bday.classList.add('input-error');
+        bday.addEventListener('input', () => bday.classList.remove('input-error'), { once: true });
+        valid = false;
+      }
+
+      if (!document.getElementById('gender-val').value) {
         document.getElementById('gender-error').style.display = 'block';
         valid = false;
       }
 
       if (!valid) return;
 
+      submitBtn.disabled = true;
       const loading = document.getElementById('loading');
       loading.classList.add('show');
       setTimeout(() => {
         loading.classList.remove('show');
         document.getElementById('result').classList.add('show');
+        submitBtn.disabled = false;
       }, 2400);
     }
 
     function closeResult() {
       document.getElementById('result').classList.remove('show');
     }
+
+    updateTranslations('en');
   </script>
 
 </body>
