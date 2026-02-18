@@ -7,16 +7,16 @@
   <meta name="description" content="UnlockSaju: Saju (Four Pillars of Destiny) reading in multiple languages." />
 
   <!-- SEO: canonical + hreflang (A-option: language-specific URLs) -->
-  <link rel="canonical" href="https://YOUR_DOMAIN.com/en/" />
-  <link rel="alternate" hreflang="x-default" href="https://YOUR_DOMAIN.com/" />
-  <link rel="alternate" hreflang="en" href="https://YOUR_DOMAIN.com/en/" />
-  <link rel="alternate" hreflang="zh" href="https://YOUR_DOMAIN.com/zh/" />
-  <link rel="alternate" hreflang="hi" href="https://YOUR_DOMAIN.com/hi/" />
-  <link rel="alternate" hreflang="es" href="https://YOUR_DOMAIN.com/es/" />
-  <link rel="alternate" hreflang="fr" href="https://YOUR_DOMAIN.com/fr/" />
-  <link rel="alternate" hreflang="ar" href="https://YOUR_DOMAIN.com/ar/" />
-  <link rel="alternate" hreflang="pt" href="https://YOUR_DOMAIN.com/pt/" />
-  <link rel="alternate" hreflang="ru" href="https://YOUR_DOMAIN.com/ru/" />
+  <link rel="canonical" href="https://unlocksaju.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://unlocksaju.com/" />
+  <link rel="alternate" hreflang="en" href="https://unlocksaju.com/en/" />
+  <link rel="alternate" hreflang="zh" href="https://unlocksaju.com/zh/" />
+  <link rel="alternate" hreflang="hi" href="https://unlocksaju.com/hi/" />
+  <link rel="alternate" hreflang="es" href="https://unlocksaju.com/es/" />
+  <link rel="alternate" hreflang="fr" href="https://unlocksaju.com/fr/" />
+  <link rel="alternate" hreflang="ar" href="https://unlocksaju.com/ar/" />
+  <link rel="alternate" hreflang="pt" href="https://unlocksaju.com/pt/" />
+  <link rel="alternate" hreflang="ru" href="https://unlocksaju.com/ru/" />
 
   <!-- Vercel Analytics (정적 사이트용) -->
   <script defer src="/_vercel/insights/script.js"></script>
@@ -28,26 +28,9 @@
   />
 
   <style>
-    /* ─────────────────────────────────────────
-       RESET & CUSTOM PROPERTIES
-    ───────────────────────────────────────── */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink:#0d0a07; --paper:#f5efe6; --red:#c0392b; --gold:#b8860b; --gold-light:#d4a017; }
 
-    :root {
-      --ink:        #0d0a07;
-      --paper:      #f5efe6;
-      --red:        #c0392b;
-      --gold:       #b8860b;
-      --gold-light: #d4a017;
-    }
-
-    /* ─────────────────────────────────────────
-       BASE
-    ───────────────────────────────────────── */
     html, body {
       width: 100%;
       min-height: 100vh;
@@ -57,7 +40,6 @@
       overflow-x: hidden;
     }
 
-    /* Noise texture overlay */
     body::before {
       content: '';
       position: fixed;
@@ -68,9 +50,6 @@
       opacity: 0.5;
     }
 
-    /* ─────────────────────────────────────────
-       LANGUAGE BAR
-    ───────────────────────────────────────── */
     .lang-bar {
       position: relative;
       z-index: 10;
@@ -79,10 +58,7 @@
       padding: 10px 24px;
       background: var(--ink);
     }
-
-    [dir="rtl"] .lang-bar {
-      justify-content: flex-start;
-    }
+    [dir="rtl"] .lang-bar { justify-content: flex-start; }
 
     .lang-btn {
       display: flex;
@@ -99,22 +75,10 @@
       text-transform: uppercase;
       transition: border-color 0.2s, color 0.2s;
     }
+    .lang-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+    .lang-btn .chevron { font-size: 0.6rem; transition: transform 0.2s; }
+    .lang-btn.open .chevron { transform: rotate(180deg); }
 
-    .lang-btn:hover {
-      border-color: var(--gold);
-      color: var(--gold-light);
-    }
-
-    .lang-btn .chevron {
-      font-size: 0.6rem;
-      transition: transform 0.2s;
-    }
-
-    .lang-btn.open .chevron {
-      transform: rotate(180deg);
-    }
-
-    /* Language grid popup */
     .lang-popup-overlay {
       display: none;
       position: fixed;
@@ -126,16 +90,8 @@
       padding-top: 50px;
       padding-right: 24px;
     }
-
-    [dir="rtl"] .lang-popup-overlay {
-      justify-content: flex-start;
-      padding-left: 24px;
-      padding-right: 0;
-    }
-
-    .lang-popup-overlay.open {
-      display: flex;
-    }
+    [dir="rtl"] .lang-popup-overlay { justify-content: flex-start; padding-left: 24px; padding-right: 0; }
+    .lang-popup-overlay.open { display: flex; }
 
     .lang-popup {
       background: #13100c;
@@ -145,17 +101,8 @@
       width: 440px;
       animation: popIn 0.2s ease;
     }
-
-    @media (max-width: 500px) {
-      .lang-popup {
-        width: calc(100vw - 48px);
-      }
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: translateY(-10px) scale(0.97); }
-      to   { opacity: 1; transform: translateY(0)     scale(1);    }
-    }
+    @media (max-width: 500px) { .lang-popup { width: calc(100vw - 48px); } }
+    @keyframes popIn { from { opacity: 0; transform: translateY(-10px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
     .lang-popup-title {
       font-family: 'Cinzel', serif;
@@ -168,12 +115,7 @@
       border-bottom: 1px solid rgba(184, 134, 11, 0.2);
     }
 
-    .lang-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-
+    .lang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .lang-tile {
       display: flex;
       align-items: center;
@@ -185,23 +127,9 @@
       transition: background 0.15s, border-color 0.15s;
       border-radius: 1px;
     }
-
-    .lang-tile:hover {
-      background: rgba(184, 134, 11, 0.1);
-      border-color: rgba(184, 134, 11, 0.35);
-    }
-
-    .lang-tile.active {
-      background: rgba(184, 134, 11, 0.15);
-      border-color: var(--gold);
-    }
-
-    .lang-names {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
+    .lang-tile:hover { background: rgba(184, 134, 11, 0.1); border-color: rgba(184, 134, 11, 0.35); }
+    .lang-tile.active { background: rgba(184, 134, 11, 0.15); border-color: var(--gold); }
+    .lang-names { display: flex; flex-direction: column; gap: 3px; }
     .lang-en {
       font-family: 'Cinzel', serif;
       font-size: 0.68rem;
@@ -209,27 +137,16 @@
       color: #c8bfb0;
       text-transform: uppercase;
     }
-
-    .lang-native {
-      font-size: 0.88rem;
-      color: #7a6f60;
-    }
-
-    .lang-tile.active .lang-en   { color: var(--gold-light); }
+    .lang-native { font-size: 0.88rem; color: #7a6f60; }
+    .lang-tile.active .lang-en { color: var(--gold-light); }
     .lang-tile.active .lang-native { color: var(--gold); }
 
-    /* ─────────────────────────────────────────
-       TOP STRIP
-    ───────────────────────────────────────── */
     .top-strip {
       width: 100%;
       height: 4px;
       background: linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--red) 100%);
     }
 
-    /* ─────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────── */
     .hero {
       position: relative;
       z-index: 1;
@@ -239,7 +156,6 @@
       padding: 60px 20px 80px;
       text-align: center;
     }
-
     .hero-circle {
       position: absolute;
       top: -80px;
@@ -252,7 +168,6 @@
       opacity: 0.55;
       pointer-events: none;
     }
-
     .tagline {
       font-family: 'Noto Serif KR', serif;
       font-size: 0.75rem;
@@ -263,7 +178,6 @@
       opacity: 0;
       animation: fadeUp 0.8s 0.2s forwards;
     }
-
     .hero h1 {
       font-family: 'Cinzel', serif;
       font-size: clamp(2.8rem, 7vw, 5.5rem);
@@ -276,15 +190,8 @@
       opacity: 0;
       animation: fadeUp 0.9s 0.4s forwards;
     }
-
-    .hero h1 span {
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero h1 .hero-your {
-      color: var(--red);
-      -webkit-text-fill-color: var(--red);
-    }
+    .hero h1 span { -webkit-text-fill-color: transparent; }
+    .hero h1 .hero-your { color: var(--red); -webkit-text-fill-color: var(--red); }
 
     .hero-sub {
       margin-top: 22px;
@@ -304,59 +211,20 @@
       opacity: 0;
       animation: fadeUp 0.9s 0.8s forwards;
     }
-
-    .trigram {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      align-items: center;
-    }
-
-    .trigram-bar {
-      width: 30px;
-      height: 4px;
-      background: var(--gold);
-      border-radius: 2px;
-    }
-
-    .trigram-bar.broken {
-      background: none;
-      display: flex;
-      gap: 5px;
-    }
-
-    .trigram-bar.broken::before,
-    .trigram-bar.broken::after {
-      content: '';
-      flex: 1;
-      height: 4px;
-      background: var(--gold);
-      border-radius: 2px;
+    .trigram { display: flex; flex-direction: column; gap: 5px; align-items: center; }
+    .trigram-bar { width: 30px; height: 4px; background: var(--gold); border-radius: 2px; }
+    .trigram-bar.broken { background: none; display: flex; gap: 5px; }
+    .trigram-bar.broken::before, .trigram-bar.broken::after {
+      content: ''; flex: 1; height: 4px; background: var(--gold); border-radius: 2px;
     }
 
     .divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-      max-width: 500px;
-      margin: 48px auto 0;
-      opacity: 0;
-      animation: fadeUp 0.9s 1s forwards;
+      display: flex; align-items: center; gap: 16px;
+      width: 100%; max-width: 500px; margin: 48px auto 0;
+      opacity: 0; animation: fadeUp 0.9s 1s forwards;
     }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .divider span {
-      font-size: 1.3rem;
-      color: var(--gold);
-    }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--gold); }
+    .divider span { font-size: 1.3rem; color: var(--gold); }
 
     .cta-btn {
       display: inline-block;
@@ -377,7 +245,6 @@
       opacity: 0;
       animation: fadeUp 0.9s 1.1s forwards;
     }
-
     .cta-btn::before {
       content: '';
       position: absolute;
@@ -386,17 +253,12 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-
     .cta-btn:hover::before { opacity: 1; }
-    .cta-btn:hover         { transform: translateY(-2px); }
-    .cta-btn span          { position: relative; z-index: 1; }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .cta-btn span { position: relative; z-index: 1; }
 
-    /* ─────────────────────────────────────────
-       FEATURES STRIP
-    ───────────────────────────────────────── */
     .features {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1px;
@@ -404,18 +266,8 @@
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-
-    .feature {
-      background: var(--paper);
-      padding: 32px 28px;
-      text-align: center;
-    }
-
-    .feature-icon {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-    }
-
+    .feature { background: var(--paper); padding: 32px 28px; text-align: center; }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
     .feature h3 {
       font-family: 'Cinzel', serif;
       font-size: 0.8rem;
@@ -424,34 +276,11 @@
       color: var(--gold);
       margin-bottom: 8px;
     }
+    .feature p { font-size: 0.88rem; color: #5a4f40; line-height: 1.6; font-style: italic; }
 
-    .feature p {
-      font-size: 0.88rem;
-      color: #5a4f40;
-      line-height: 1.6;
-      font-style: italic;
-    }
-
-    /* ─────────────────────────────────────────
-       EXPLANATION (dark section)
-    ───────────────────────────────────────── */
-    .explanation {
-      position: relative;
-      z-index: 1;
-      background: var(--ink);
-      padding: 80px 20px;
-    }
-
-    .expl-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .expl-heading {
-      text-align: center;
-      margin-bottom: 44px;
-    }
-
+    .explanation { position: relative; z-index: 1; background: var(--ink); padding: 80px 20px; }
+    .expl-inner { max-width: 760px; margin: 0 auto; }
+    .expl-heading { text-align: center; margin-bottom: 44px; }
     .tagline-sm {
       font-family: 'Noto Serif KR', serif;
       font-size: 0.72rem;
@@ -460,21 +289,13 @@
       color: var(--gold);
       margin-bottom: 14px;
     }
-
     .expl-heading h2 {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.6rem, 4vw, 2.4rem);
       color: var(--paper);
       font-weight: 600;
     }
-
-    .gold-rule {
-      width: 60px;
-      height: 1px;
-      background: var(--gold);
-      margin: 20px auto 0;
-    }
-
+    .gold-rule { width: 60px; height: 1px; background: var(--gold); margin: 20px auto 0; }
     .expl-body p {
       font-size: 1rem;
       line-height: 1.9;
@@ -482,8 +303,7 @@
       margin-bottom: 20px;
       font-style: italic;
     }
-
-    .expl-body p em     { color: var(--gold-light); }
+    .expl-body p em { color: var(--gold-light); }
     .expl-body p strong { color: #e0d5c0; font-style: normal; }
 
     .expl-pillars {
@@ -494,26 +314,14 @@
       border: 1px solid rgba(184, 134, 11, 0.2);
       margin-top: 52px;
     }
-
-    @media (max-width: 600px) {
-      .expl-pillars {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .pillar-card {
-      background: #130f0a;
-      padding: 28px 20px;
-      text-align: center;
-    }
-
+    @media (max-width: 600px) { .expl-pillars { grid-template-columns: repeat(2, 1fr); } }
+    .pillar-card { background: #130f0a; padding: 28px 20px; text-align: center; }
     .pillar-char {
       font-size: 2.2rem;
       color: var(--gold);
       font-family: 'Noto Serif KR', serif;
       margin-bottom: 10px;
     }
-
     .pillar-card h4 {
       font-family: 'Cinzel', serif;
       font-size: 0.72rem;
@@ -522,17 +330,8 @@
       color: #e0d5c0;
       margin-bottom: 8px;
     }
+    .pillar-card p { font-size: 0.8rem; color: #7a6f60; line-height: 1.6; font-style: italic; }
 
-    .pillar-card p {
-      font-size: 0.8rem;
-      color: #7a6f60;
-      line-height: 1.6;
-      font-style: italic;
-    }
-
-    /* ─────────────────────────────────────────
-       FORM SECTION
-    ───────────────────────────────────────── */
     #form-section {
       position: relative;
       z-index: 1;
@@ -540,26 +339,14 @@
       margin: 80px auto;
       padding: 0 20px;
     }
-
-    .form-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
+    .form-header { text-align: center; margin-bottom: 48px; }
     .form-header h2 {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.6rem, 4vw, 2.4rem);
       font-weight: 600;
       color: var(--ink);
     }
-
-    .form-header p {
-      margin-top: 12px;
-      color: #5a4f40;
-      font-style: italic;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
+    .form-header p { margin-top: 12px; color: #5a4f40; font-style: italic; font-size: 0.95rem; line-height: 1.7; }
 
     .form-card {
       background: rgba(255, 255, 255, 0.55);
@@ -569,18 +356,9 @@
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
       backdrop-filter: blur(4px);
     }
+    @media (max-width: 540px) { .form-card { padding: 32px 20px; } }
 
-    @media (max-width: 540px) {
-      .form-card { padding: 32px 20px; }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
+    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
     .field label {
       font-family: 'Cinzel', serif;
       font-size: 0.7rem;
@@ -588,9 +366,7 @@
       text-transform: uppercase;
       color: var(--gold);
     }
-
-    .field input,
-    .field select {
+    .field input, .field select {
       background: rgba(245, 239, 230, 0.8);
       border: 1px solid rgba(184, 134, 11, 0.3);
       border-radius: 1px;
@@ -602,12 +378,7 @@
       outline: none;
       width: 100%;
     }
-
-    .field input:focus,
-    .field select:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
-    }
+    .field input:focus, .field select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1); }
 
     .field select {
       cursor: pointer;
@@ -617,43 +388,17 @@
       background-position: right 16px center;
       padding-right: 40px;
     }
+    [dir="rtl"] .field select { background-position: left 16px center; padding-right: 16px; padding-left: 40px; }
 
-    [dir="rtl"] .field select {
-      background-position: left 16px center;
-      padding-right: 16px;
-      padding-left: 40px;
-    }
+    .optional { font-size: 0.75rem; color: #9a8a70; font-style: italic; }
 
-    .optional {
-      font-size: 0.75rem;
-      color: #9a8a70;
-      font-style: italic;
-    }
-
-    .dob-row {
-      display: grid;
-      grid-template-columns: 2fr 1.2fr 1.2fr;
-      gap: 8px;
-    }
-
+    .dob-row { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr; gap: 8px; }
     .dob-row input[type="number"]::-webkit-inner-spin-button,
-    .dob-row input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+    .dob-row input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .dob-row input[type="number"] { -moz-appearance: textfield; }
 
-    .dob-row input[type="number"] {
-      -moz-appearance: textfield;
-    }
-
-    .relation-wrap {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .gender-row {
-      display: flex;
-    }
+    .relation-wrap { display: flex; flex-direction: column; }
+    .gender-row { display: flex; }
 
     .gender-btn {
       flex: 1;
@@ -668,40 +413,19 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
     .gender-btn:first-child { border-radius: 1px 0 0 1px; }
-    .gender-btn:last-child  { border-radius: 0 1px 1px 0; border-left: none; }
+    .gender-btn:last-child { border-radius: 0 1px 1px 0; border-left: none; }
+    .gender-btn.active { background: var(--ink); color: var(--gold-light); border-color: var(--ink); }
 
-    .gender-btn.active {
-      background: var(--ink);
-      color: var(--gold-light);
-      border-color: var(--ink);
-    }
-
-    .field input.input-error,
-    .field select.input-error {
+    .field input.input-error, .field select.input-error {
       border-color: var(--red);
       box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
       animation: shake 0.35s ease;
     }
+    .field-error { font-size: 0.78rem; color: var(--red); font-style: italic; margin-top: 4px; display: none; }
+    .field-error.visible { display: block; }
 
-    .field-error {
-      font-size: 0.78rem;
-      color: var(--red);
-      font-style: italic;
-      margin-top: 4px;
-      display: none;
-    }
-
-    .field-error.visible {
-      display: block;
-    }
-
-    .submit-wrap {
-      text-align: center;
-      margin-top: 12px;
-    }
-
+    .submit-wrap { text-align: center; margin-top: 12px; }
     .submit-btn {
       display: inline-block;
       padding: 18px 64px;
@@ -718,7 +442,6 @@
       overflow: hidden;
       transition: transform 0.2s, opacity 0.2s;
     }
-
     .submit-btn::before {
       content: '';
       position: absolute;
@@ -727,26 +450,13 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-
     .submit-btn:hover:not(:disabled)::before { opacity: 1; }
-    .submit-btn:hover:not(:disabled)         { transform: translateY(-2px); }
-    .submit-btn span                          { position: relative; z-index: 1; }
+    .submit-btn:hover:not(:disabled) { transform: translateY(-2px); }
+    .submit-btn span { position: relative; z-index: 1; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+    .privacy-note { margin-top: 16px; font-size: 0.78rem; color: #9a8a70; font-style: italic; }
 
-    .privacy-note {
-      margin-top: 16px;
-      font-size: 0.78rem;
-      color: #9a8a70;
-      font-style: italic;
-    }
-
-    /* ─────────────────────────────────────────
-       RESULT CARD OVERLAY
-    ───────────────────────────────────────── */
     #result {
       display: none;
       position: fixed;
@@ -757,7 +467,6 @@
       justify-content: center;
       padding: 20px;
     }
-
     #result.show { display: flex; }
 
     .result-card {
@@ -769,9 +478,7 @@
       text-align: center;
       position: relative;
     }
-
-    .result-card::before,
-    .result-card::after {
+    .result-card::before, .result-card::after {
       content: '';
       position: absolute;
       width: 40px;
@@ -780,9 +487,8 @@
       border-style: solid;
       border-width: 0;
     }
-
     .result-card::before { top: 12px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
-    .result-card::after  { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
+    .result-card::after { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
 
     .result-card h3 {
       font-family: 'Cinzel', serif;
@@ -790,13 +496,7 @@
       color: var(--gold);
       margin-bottom: 16px;
     }
-
-    .result-card p {
-      font-style: italic;
-      line-height: 1.85;
-      color: #3a2f20;
-      font-size: 0.98rem;
-    }
+    .result-card p { font-style: italic; line-height: 1.85; color: #3a2f20; font-size: 0.98rem; }
 
     .result-badge {
       display: inline-flex;
@@ -810,7 +510,6 @@
       font-size: 0.82rem;
       border-radius: 2px;
     }
-
     .result-badge .dot {
       width: 8px;
       height: 8px;
@@ -818,7 +517,6 @@
       background: var(--red);
       box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
     }
-
     .result-close {
       margin-top: 26px;
       padding: 12px 36px;
@@ -832,9 +530,6 @@
       cursor: pointer;
     }
 
-    /* ─────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────── */
     footer {
       position: relative;
       z-index: 1;
@@ -846,23 +541,16 @@
       font-style: italic;
     }
 
-    /* ─────────────────────────────────────────
-       KEYFRAMES
-    ───────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0);    }
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
-      25%       { transform: translateX(-6px); }
-      75%       { transform: translateX(6px);  }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="lang-bar">
     <button class="lang-btn" id="lang-btn" onclick="toggleLang()">
       <span id="lang-label" data-i18n="langLabel">English</span>
@@ -1006,24 +694,9 @@
       </div>
 
       <div class="expl-body">
-        <p data-i18n="explP1">
-          Saju (사주), literally meaning "four pillars," is a millennia-old Korean and East Asian system of
-          destiny analysis. At the moment of your birth, the cosmos aligned in a precise configuration —
-          the year, month, day, and hour each produce a pillar composed of a Heavenly Stem and an Earthly
-          Branch. Together, these eight characters, known as Paljja (팔자), form the blueprint of your
-          nature, your struggles, your gifts, and the rhythms of your life.
-        </p>
-        <p data-i18n="explP2">
-          Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay
-          of the Ten Heavenly Stems and the Twelve Earthly Branches — encoding the Five Elements (Wood,
-          Fire, Earth, Metal, Water) and the cyclical energies of Yin and Yang into a living map of time.
-        </p>
-        <p data-i18n="explP3">
-          A skilled reading reveals far more than personality. It illuminates your dominant element and what
-          it means for health and temperament; your ten-year luck pillars (대운, Daewoon) — the great tidal
-          currents that shape each chapter of life; your annual fortune (세운, Sewoon) for navigating the
-          current year; and the energetic signature of your ideal relationships and career paths.
-        </p>
+        <p data-i18n="explP1">Saju (사주), literally meaning "four pillars," is a millennia-old Korean and East Asian system of destiny analysis...</p>
+        <p data-i18n="explP2">Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay...</p>
+        <p data-i18n="explP3">A skilled reading reveals far more than personality...</p>
       </div>
 
       <div class="expl-pillars">
@@ -1054,10 +727,7 @@
   <section id="form-section">
     <div class="form-header">
       <h2 data-i18n="formTitle">Enter Your Birth Information</h2>
-      <p data-i18n="formSubtitle">
-        Saju requires the exact date and, ideally, the hour of your birth —
-        the four pillars that form the map of your fate.
-      </p>
+      <p data-i18n="formSubtitle">Saju requires the exact date and, ideally, the hour of your birth — the four pillars that form the map of your fate.</p>
     </div>
 
     <div class="form-card">
@@ -1065,13 +735,7 @@
 
         <div class="field">
           <label for="field-name" data-i18n="labelName">Name</label>
-          <input
-            type="text"
-            id="field-name"
-            data-i18n-placeholder="placeholderName"
-            placeholder="First and last name"
-            autocomplete="name"
-          />
+          <input type="text" id="field-name" data-i18n-placeholder="placeholderName" placeholder="First and last name" autocomplete="name" />
           <p class="field-error" id="error-name" data-i18n="errorName">Please enter your name.</p>
         </div>
 
@@ -1079,117 +743,57 @@
           <label for="field-relation" data-i18n="labelRelation">Relationship</label>
           <div class="relation-wrap">
             <select id="field-relation">
-              <option value="self"    data-i18n="rel_self">Self</option>
-              <option value="spouse"  data-i18n="rel_spouse">Spouse</option>
+              <option value="self" data-i18n="rel_self">Self</option>
+              <option value="spouse" data-i18n="rel_spouse">Spouse</option>
               <option value="partner" data-i18n="rel_partner">Partner</option>
-              <option value="parent"  data-i18n="rel_parent">Parent</option>
-              <option value="child"   data-i18n="rel_child">Child</option>
-              <option value="friend"  data-i18n="rel_friend">Friend</option>
-              <option value="other"   data-i18n="rel_other">Enter directly</option>
+              <option value="parent" data-i18n="rel_parent">Parent</option>
+              <option value="child" data-i18n="rel_child">Child</option>
+              <option value="friend" data-i18n="rel_friend">Friend</option>
+              <option value="other" data-i18n="rel_other">Enter directly</option>
             </select>
-            <input
-              type="text"
-              id="field-relation-custom"
-              data-i18n-placeholder="relCustomPlaceholder"
-              placeholder="Enter relationship"
-              style="display: none; margin-top: 8px;"
-            />
+            <input type="text" id="field-relation-custom" data-i18n-placeholder="relCustomPlaceholder" placeholder="Enter relationship" style="display:none;margin-top:8px;" />
           </div>
         </div>
 
         <div class="field">
           <label data-i18n="labelDob">Date of Birth</label>
           <div class="dob-row">
-            <input
-              type="number"
-              id="birth-year"
-              data-i18n-placeholder="dobYear"
-              placeholder="YYYY"
-              min="1900"
-              max="2025"
-              inputmode="numeric"
-            />
+            <input type="number" id="birth-year" data-i18n-placeholder="dobYear" placeholder="YYYY" min="1900" max="2025" inputmode="numeric" />
             <select id="birth-month">
               <option value="" disabled selected data-i18n="dobMonth">MM</option>
-              <option value="01">01</option>
-              <option value="02">02</option>
-              <option value="03">03</option>
-              <option value="04">04</option>
-              <option value="05">05</option>
-              <option value="06">06</option>
-              <option value="07">07</option>
-              <option value="08">08</option>
-              <option value="09">09</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
+              <option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option>
+              <option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option>
+              <option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
             </select>
-            <input
-              type="number"
-              id="birth-day"
-              data-i18n-placeholder="dobDay"
-              placeholder="DD"
-              min="1"
-              max="31"
-              inputmode="numeric"
-            />
+            <input type="number" id="birth-day" data-i18n-placeholder="dobDay" placeholder="DD" min="1" max="31" inputmode="numeric" />
           </div>
           <p class="field-error" id="error-dob" data-i18n="errorDob">Please enter a valid date (YYYY / MM / DD).</p>
         </div>
 
         <div class="field">
-          <label for="birth-hour" data-i18n="labelHour">
-            Birth Hour
-            <span class="optional" data-i18n="hourOpt">(optional but recommended)</span>
-          </label>
+          <label for="birth-hour" data-i18n="labelHour">Birth Hour <span class="optional" data-i18n="hourOpt">(optional but recommended)</span></label>
           <select id="birth-hour">
             <option value="" data-i18n="hourUnknown">Unknown</option>
-            <option value="23-1">11 PM – 1 AM</option>
-            <option value="1-3">1 AM – 3 AM</option>
-            <option value="3-5">3 AM – 5 AM</option>
-            <option value="5-7">5 AM – 7 AM</option>
-            <option value="7-9">7 AM – 9 AM</option>
-            <option value="9-11">9 AM – 11 AM</option>
-            <option value="11-13">11 AM – 1 PM</option>
-            <option value="13-15">1 PM – 3 PM</option>
-            <option value="15-17">3 PM – 5 PM</option>
-            <option value="17-19">5 PM – 7 PM</option>
-            <option value="19-21">7 PM – 9 PM</option>
-            <option value="21-23">9 PM – 11 PM</option>
+            <option value="23-1">11 PM – 1 AM</option><option value="1-3">1 AM – 3 AM</option><option value="3-5">3 AM – 5 AM</option>
+            <option value="5-7">5 AM – 7 AM</option><option value="7-9">7 AM – 9 AM</option><option value="9-11">9 AM – 11 AM</option>
+            <option value="11-13">11 AM – 1 PM</option><option value="13-15">1 PM – 3 PM</option><option value="15-17">3 PM – 5 PM</option>
+            <option value="17-19">5 PM – 7 PM</option><option value="19-21">7 PM – 9 PM</option><option value="21-23">9 PM – 11 PM</option>
           </select>
         </div>
 
         <div class="field">
           <label data-i18n="labelGender">Gender</label>
           <div class="gender-row">
-            <button
-              type="button"
-              class="gender-btn"
-              id="btn-male"
-              data-gender="male"
-              data-i18n="genderMale"
-              onclick="setGender(this)"
-            >Male</button>
-            <button
-              type="button"
-              class="gender-btn"
-              id="btn-female"
-              data-gender="female"
-              data-i18n="genderFemale"
-              onclick="setGender(this)"
-            >Female</button>
+            <button type="button" class="gender-btn" id="btn-male" data-gender="male" data-i18n="genderMale" onclick="setGender(this)">Male</button>
+            <button type="button" class="gender-btn" id="btn-female" data-gender="female" data-i18n="genderFemale" onclick="setGender(this)">Female</button>
           </div>
           <input type="hidden" id="gender-val" value="" />
           <p class="field-error" id="error-gender" data-i18n="genderError">Please select your gender.</p>
         </div>
 
         <div class="submit-wrap">
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span data-i18n="submitBtn">Unlock My Saju</span>
-          </button>
-          <p class="privacy-note" data-i18n="privacyNote">
-            We never store or share your personal information.
-          </p>
+          <button type="submit" class="submit-btn" id="submit-btn"><span data-i18n="submitBtn">Unlock My Saju</span></button>
+          <p class="privacy-note" data-i18n="privacyNote">We never store or share your personal information.</p>
         </div>
 
       </form>
@@ -1200,19 +804,14 @@
     <p data-i18n="footer">© 2026 UnlockSaju · Ancient wisdom, modern insight</p>
   </footer>
 
-  <!-- Result overlay -->
   <div id="result">
     <div class="result-card">
       <h3 data-i18n="resultTitle">Service Under Maintenance</h3>
-      <p data-i18n="resultBody">
-        We’re currently preparing the reading engine. Please check back soon.
-      </p>
-
+      <p data-i18n="resultBody">We’re currently preparing the reading engine. Please check back soon.</p>
       <div class="result-badge">
         <span class="dot"></span>
         <span data-i18n="resultBadge">Maintenance in progress</span>
       </div>
-
       <button class="result-close" onclick="closeResult()" data-i18n="resultClose">Close</button>
     </div>
   </div>
@@ -1221,11 +820,10 @@
     // =========================
     // i18n (A-option: language-specific URL + JSON dictionaries)
     // =========================
-    const PAGE_LANG = 'en'; // <-- copy this file to /zh/index.html etc and change to 'zh'
+    const PAGE_LANG = 'en';
     const SUPPORTED_LANGS = ['en','zh','hi','es','fr','ar','pt','ru'];
     const LANG_PATH = { en:'/en/', zh:'/zh/', hi:'/hi/', es:'/es/', fr:'/fr/', ar:'/ar/', pt:'/pt/', ru:'/ru/' };
 
-    let currentLang = PAGE_LANG;
     let selectedGender = '';
 
     async function loadDict(lang) {
@@ -1250,8 +848,7 @@
         if (t[key] !== undefined) el.placeholder = t[key];
       });
 
-      // Relationship select options (special case)
-      const relKeys = ['self', 'spouse', 'partner', 'parent', 'child', 'friend', 'other'];
+      const relKeys = ['self','spouse','partner','parent','child','friend','other'];
       relKeys.forEach(k => {
         const opt = document.querySelector(`#field-relation option[value="${k}"]`);
         if (opt && t[`rel_${k}`]) opt.textContent = t[`rel_${k}`];
@@ -1263,13 +860,11 @@
       const hourUnknown = document.querySelector('#birth-hour option[value=""]');
       if (hourUnknown && t.hourUnknown) hourUnknown.textContent = t.hourUnknown;
 
-      // Gender buttons (special case)
       const maleBtn = document.getElementById('btn-male');
       const femaleBtn = document.getElementById('btn-female');
       if (maleBtn && t.genderMale) maleBtn.textContent = t.genderMale;
       if (femaleBtn && t.genderFemale) femaleBtn.textContent = t.genderFemale;
 
-      // Language label on top button
       const langLabelEl = document.getElementById('lang-label');
       if (langLabelEl && t.langLabel) langLabelEl.textContent = t.langLabel;
     }
@@ -1290,7 +885,6 @@
       }
     }
 
-    // For A-option: language switch = navigate to language URL (SEO-friendly)
     function goToLang(lang) {
       if (!SUPPORTED_LANGS.includes(lang)) lang = 'en';
       try { localStorage.setItem('lang', lang); } catch (_) {}
@@ -1298,17 +892,11 @@
     }
 
     function toggleLang() {
-      const btn     = document.getElementById('lang-btn');
+      const btn = document.getElementById('lang-btn');
       const overlay = document.getElementById('lang-overlay');
-      const isOpen  = overlay.classList.contains('open');
-
-      if (isOpen) {
-        overlay.classList.remove('open');
-        btn.classList.remove('open');
-      } else {
-        overlay.classList.add('open');
-        btn.classList.add('open');
-      }
+      const isOpen = overlay.classList.contains('open');
+      overlay.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
     }
 
     function closeLangOnOverlay(e) {
@@ -1316,7 +904,6 @@
     }
 
     function selectLang(tileEl, lang) {
-      // A-option: switch language by moving to a language-specific URL (SEO-friendly)
       document.getElementById('lang-overlay').classList.remove('open');
       document.getElementById('lang-btn').classList.remove('open');
       goToLang(lang);
@@ -1373,7 +960,7 @@
       return isValid;
     }
 
-    /* ✅ 숫자 입력 방어: "최대 자리수" 강제 (type=number는 maxlength가 안 먹어서 JS로 처리) */
+    // ✅ 숫자 입력 방어: type=number는 maxlength가 안 먹어서 JS로 처리
     function enforceMaxDigits(inputEl, maxDigits) {
       const raw = String(inputEl.value || '');
       const digitsOnly = raw.replace(/\D/g, '');
@@ -1381,9 +968,13 @@
       if (raw !== trimmed) inputEl.value = trimmed;
     }
 
+    // ✅ YYYY: 최대 4자리 제한
+    const yearElLive = document.getElementById('birth-year');
+    yearElLive.addEventListener('input', () => enforceMaxDigits(yearElLive, 4));
+
     // ✅ DD: 최대 2자리 제한
-    const dayEl = document.getElementById('birth-day');
-    dayEl.addEventListener('input', () => enforceMaxDigits(dayEl, 2));
+    const dayElLive = document.getElementById('birth-day');
+    dayElLive.addEventListener('input', () => enforceMaxDigits(dayElLive, 2));
 
     function showMaintenanceModal() {
       document.getElementById('result').classList.add('show');
@@ -1398,13 +989,14 @@
       const dayEl    = document.getElementById('birth-day');
       const errorDob = document.getElementById('error-dob');
 
-      // ✅ 혹시 붙여넣기로 길게 들어온 경우 한 번 더 방어
+      // ✅ 붙여넣기 케이스까지 방어
+      enforceMaxDigits(yearEl, 4);
       enforceMaxDigits(dayEl, 2);
 
       const yr = parseInt(yearEl.value, 10);
       const dy = parseInt(dayEl.value, 10);
 
-      const nameOk  = validateField(nameEl,  document.getElementById('error-name'),   nameEl.value.trim().length > 0);
+      const nameOk  = validateField(nameEl, document.getElementById('error-name'), nameEl.value.trim().length > 0);
       const yearOk  = !isNaN(yr) && yearEl.value.length === 4 && yr >= 1900 && yr <= 2025;
       const monthOk = monthEl.value !== '';
       const dayOk   = !isNaN(dy) && dy >= 1 && dy <= 31;
@@ -1432,7 +1024,6 @@
 
       if (!nameOk || !dobOk || !genderOk) return;
 
-      // ✅ 아직 서비스 개발 전 → 점검중 모달 띄우기
       showMaintenanceModal();
     }
 
@@ -1440,7 +1031,7 @@
       document.getElementById('result').classList.remove('show');
     }
 
-    // Initialize translations for this language page
+    // init
     initI18n();
   </script>
 </body>
