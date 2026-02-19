@@ -233,6 +233,16 @@
         genderOk = false;
       }
 
+      const submitPassed = nameOk && dobOk && genderOk;
+
+      trackEvent('unlock_submit', {
+        event_category: 'form',
+        event_label: 'saju_form_submit_attempt',
+        validation_passed: submitPassed
+      });
+
+      if (!submitPassed) return;
+
       if (!nameOk || !dobOk || !genderOk) return;
 
       trackEvent('unlock_submit', {
