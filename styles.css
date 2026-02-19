@@ -366,6 +366,12 @@
     .dob-row input[type="number"]::-webkit-inner-spin-button,
     .dob-row input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     .dob-row input[type="number"] { -moz-appearance: textfield; }
+    .dob-row select { min-width: 0; padding-right: 30px; background-position: right 10px center; }
+    #birth-month { text-align: center; text-align-last: center; }
+    @media (max-width: 420px) {
+      .dob-row { grid-template-columns: 1.8fr 1.1fr 1.1fr; gap: 6px; }
+      .dob-row select { padding-right: 24px; background-position: right 8px center; }
+    }
 
     .relation-wrap { display: flex; flex-direction: column; }
     .gender-row { display: flex; }
@@ -426,6 +432,7 @@
     .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
     .privacy-note { margin-top: 16px; font-size: 0.78rem; color: #9a8a70; font-style: italic; }
+    .privacy-disclaimer { margin-top: 8px; font-size: 0.76rem; color: #8f7f66; line-height: 1.55; }
 
     #result {
       display: none;
