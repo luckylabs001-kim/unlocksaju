@@ -18,6 +18,42 @@
   <link rel="alternate" hreflang="pt" href="https://unlocksaju.com/pt/" />
   <link rel="alternate" hreflang="ru" href="https://unlocksaju.com/ru/" />
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UnlockSaju</title>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <h1>Unlock Your Fate.</h1>
+  <button onclick="alert('Your destiny is loading...')">
+    Unlock
+  </button>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UnlockSaju — Reveal Your Destiny</title>
+  <meta name="description" content="UnlockSaju: Saju (Four Pillars of Destiny) reading in multiple languages." />
+
+  <!-- SEO: canonical + hreflang (A-option: language-specific URLs) -->
+  <link rel="canonical" href="https://unlocksaju.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://unlocksaju.com/" />
+  <link rel="alternate" hreflang="en" href="https://unlocksaju.com/en/" />
+  <link rel="alternate" hreflang="zh" href="https://unlocksaju.com/zh/" />
+  <link rel="alternate" hreflang="hi" href="https://unlocksaju.com/hi/" />
+  <link rel="alternate" hreflang="es" href="https://unlocksaju.com/es/" />
+  <link rel="alternate" hreflang="fr" href="https://unlocksaju.com/fr/" />
+  <link rel="alternate" hreflang="ar" href="https://unlocksaju.com/ar/" />
+  <link rel="alternate" hreflang="pt" href="https://unlocksaju.com/pt/" />
+  <link rel="alternate" hreflang="ru" href="https://unlocksaju.com/ru/" />
+
   <!-- Vercel Analytics (정적 사이트용) -->
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -310,5 +346,1044 @@
 
     <script defer src="/app.js"></script>
 
+</body>
+</html>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=IM+Fell+English:ital@0;1&family=Noto+Serif+KR:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink:#0d0a07; --paper:#f5efe6; --red:#c0392b; --gold:#b8860b; --gold-light:#d4a017; }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'IM Fell English', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .lang-bar {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 24px;
+      background: var(--ink);
+    }
+    [dir="rtl"] .lang-bar { justify-content: flex-start; }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: 1px solid rgba(184, 134, 11, 0.35);
+      color: #c8bfb0;
+      cursor: pointer;
+      padding: 7px 14px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lang-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+    .lang-btn .chevron { font-size: 0.6rem; transition: transform 0.2s; }
+    .lang-btn.open .chevron { transform: rotate(180deg); }
+
+    .lang-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(13, 10, 7, 0.72);
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding-top: 50px;
+      padding-right: 24px;
+    }
+    [dir="rtl"] .lang-popup-overlay { justify-content: flex-start; padding-left: 24px; padding-right: 0; }
+    .lang-popup-overlay.open { display: flex; }
+
+    .lang-popup {
+      background: #13100c;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.7);
+      padding: 28px;
+      width: 440px;
+      animation: popIn 0.2s ease;
+    }
+    @media (max-width: 500px) { .lang-popup { width: calc(100vw - 48px); } }
+    @keyframes popIn { from { opacity: 0; transform: translateY(-10px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+    .lang-popup-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+    }
+
+    .lang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .lang-tile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      border-radius: 1px;
+    }
+    .lang-tile:hover { background: rgba(184, 134, 11, 0.1); border-color: rgba(184, 134, 11, 0.35); }
+    .lang-tile.active { background: rgba(184, 134, 11, 0.15); border-color: var(--gold); }
+    .lang-names { display: flex; flex-direction: column; gap: 3px; }
+    .lang-en {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: #c8bfb0;
+      text-transform: uppercase;
+    }
+    .lang-native { font-size: 0.88rem; color: #7a6f60; }
+    .lang-tile.active .lang-en { color: var(--gold-light); }
+    .lang-tile.active .lang-native { color: var(--gold); }
+
+    .top-strip {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--red) 100%);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 80px;
+      text-align: center;
+    }
+    .hero-circle {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #e8d5b0 0%, transparent 70%);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .tagline {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(160deg, #1a1208 30%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hero h1 span { -webkit-text-fill-color: transparent; }
+    .hero h1 .hero-your { color: var(--red); -webkit-text-fill-color: var(--red); }
+
+    .hero-sub {
+      margin-top: 22px;
+      max-width: 480px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #4a3f30;
+      font-style: italic;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+
+    .trigrams {
+      display: flex;
+      gap: 28px;
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+    .trigram { display: flex; flex-direction: column; gap: 5px; align-items: center; }
+    .trigram-bar { width: 30px; height: 4px; background: var(--gold); border-radius: 2px; }
+    .trigram-bar.broken { background: none; display: flex; gap: 5px; }
+    .trigram-bar.broken::before, .trigram-bar.broken::after {
+      content: ''; flex: 1; height: 4px; background: var(--gold); border-radius: 2px;
+    }
+
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      width: 100%; max-width: 500px; margin: 48px auto 0;
+      opacity: 0; animation: fadeUp 0.9s 1s forwards;
+    }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--gold); }
+    .divider span { font-size: 1.3rem; color: var(--gold); }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 16px 48px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+      transition: transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.1s forwards;
+    }
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cta-btn:hover::before { opacity: 1; }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .cta-btn span { position: relative; z-index: 1; }
+
+    .features {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .feature { background: var(--paper); padding: 32px 28px; text-align: center; }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .feature h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .feature p { font-size: 0.88rem; color: #5a4f40; line-height: 1.6; font-style: italic; }
+
+    .explanation { position: relative; z-index: 1; background: var(--ink); padding: 80px 20px; }
+    .expl-inner { max-width: 760px; margin: 0 auto; }
+    .expl-heading { text-align: center; margin-bottom: 44px; }
+    .tagline-sm {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .expl-heading h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--paper);
+      font-weight: 600;
+    }
+    .gold-rule { width: 60px; height: 1px; background: var(--gold); margin: 20px auto 0; }
+    .expl-body p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #c8bfb0;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .expl-body p em { color: var(--gold-light); }
+    .expl-body p strong { color: #e0d5c0; font-style: normal; }
+
+    .expl-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(184, 134, 11, 0.2);
+      border: 1px solid rgba(184, 134, 11, 0.2);
+      margin-top: 52px;
+    }
+    @media (max-width: 600px) { .expl-pillars { grid-template-columns: repeat(2, 1fr); } }
+    .pillar-card { background: #130f0a; padding: 28px 20px; text-align: center; }
+    .pillar-char {
+      font-size: 2.2rem;
+      color: var(--gold);
+      font-family: 'Noto Serif KR', serif;
+      margin-bottom: 10px;
+    }
+    .pillar-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e0d5c0;
+      margin-bottom: 8px;
+    }
+    .pillar-card p { font-size: 0.8rem; color: #7a6f60; line-height: 1.6; font-style: italic; }
+
+    #form-section {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+    .form-header { text-align: center; margin-bottom: 48px; }
+    .form-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .form-header p { margin-top: 12px; color: #5a4f40; font-style: italic; font-size: 0.95rem; line-height: 1.7; }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(184, 134, 11, 0.25);
+      border-radius: 2px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(4px);
+    }
+    @media (max-width: 540px) { .form-card { padding: 32px 20px; } }
+
+    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .field label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .field input, .field select {
+      background: rgba(245, 239, 230, 0.8);
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      border-radius: 1px;
+      padding: 13px 16px;
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 0.97rem;
+      color: var(--ink);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .field input:focus, .field select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1); }
+
+    .field select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8860b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    [dir="rtl"] .field select { background-position: left 16px center; padding-right: 16px; padding-left: 40px; }
+
+    .optional { font-size: 0.75rem; color: #9a8a70; font-style: italic; }
+
+    .dob-row { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr; gap: 8px; }
+    .dob-row input[type="number"]::-webkit-inner-spin-button,
+    .dob-row input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .dob-row input[type="number"] { -moz-appearance: textfield; }
+
+    .relation-wrap { display: flex; flex-direction: column; }
+    .gender-row { display: flex; }
+
+    .gender-btn {
+      flex: 1;
+      padding: 13px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      background: rgba(245, 239, 230, 0.8);
+      color: #5a4f40;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gender-btn:first-child { border-radius: 1px 0 0 1px; }
+    .gender-btn:last-child { border-radius: 0 1px 1px 0; border-left: none; }
+    .gender-btn.active { background: var(--ink); color: var(--gold-light); border-color: var(--ink); }
+
+    .field input.input-error, .field select.input-error {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+      animation: shake 0.35s ease;
+    }
+    .field-error { font-size: 0.78rem; color: var(--red); font-style: italic; margin-top: 4px; display: none; }
+    .field-error.visible { display: block; }
+
+    .submit-wrap { text-align: center; margin-top: 12px; }
+    .submit-btn {
+      display: inline-block;
+      padding: 18px 64px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #8b0000 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .submit-btn:hover:not(:disabled)::before { opacity: 1; }
+    .submit-btn:hover:not(:disabled) { transform: translateY(-2px); }
+    .submit-btn span { position: relative; z-index: 1; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .privacy-note { margin-top: 16px; font-size: 0.78rem; color: #9a8a70; font-style: italic; }
+
+    #result {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(13, 10, 7, 0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #result.show { display: flex; }
+
+    .result-card {
+      background: var(--paper);
+      border: 1px solid rgba(184, 134, 11, 0.4);
+      max-width: 520px;
+      width: 100%;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .result-card::before, .result-card::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-color: var(--gold);
+      border-style: solid;
+      border-width: 0;
+    }
+    .result-card::before { top: 12px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
+    .result-card::after { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
+
+    .result-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .result-card p { font-style: italic; line-height: 1.85; color: #3a2f20; font-size: 0.98rem; }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 10px 14px;
+      border: 1px solid rgba(184, 134, 11, 0.35);
+      background: rgba(184, 134, 11, 0.08);
+      color: #6a5b43;
+      font-size: 0.82rem;
+      border-radius: 2px;
+    }
+    .result-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+    }
+    .result-close {
+      margin-top: 26px;
+      padding: 12px 36px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 0.78rem;
+      color: #9a8a70;
+      font-style: italic;
+    }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+/* 🔒 Language selector temporarily hidden for stabilization */
+.lang-bar {
+  display: none !important;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="lang-bar">
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">
+      <span id="lang-label" data-i18n="langLabel">English</span>
+      <span class="chevron">▼</span>
+    </button>
+  </div>
+
+  <div class="lang-popup-overlay" id="lang-overlay" onclick="closeLangOnOverlay(event)">
+    <div class="lang-popup">
+      <div class="lang-popup-title" data-i18n="popupTitle">Select Language</div>
+      <div class="lang-grid">
+        <div class="lang-tile active" onclick="selectLang(this, 'en')">
+          <div class="lang-names">
+            <span class="lang-en">English</span>
+            <span class="lang-native">English</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'zh')">
+          <div class="lang-names">
+            <span class="lang-en">Chinese</span>
+            <span class="lang-native">中文 (简体)</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'hi')">
+          <div class="lang-names">
+            <span class="lang-en">Hindi</span>
+            <span class="lang-native">हिन्दी</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'es')">
+          <div class="lang-names">
+            <span class="lang-en">Spanish</span>
+            <span class="lang-native">Español</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'fr')">
+          <div class="lang-names">
+            <span class="lang-en">French</span>
+            <span class="lang-native">Français</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'ar')">
+          <div class="lang-names">
+            <span class="lang-en">Arabic</span>
+            <span class="lang-native">العربية</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'pt')">
+          <div class="lang-names">
+            <span class="lang-en">Portuguese</span>
+            <span class="lang-native">Português</span>
+          </div>
+        </div>
+        <div class="lang-tile" onclick="selectLang(this, 'ru')">
+          <div class="lang-names">
+            <span class="lang-en">Russian</span>
+            <span class="lang-native">Русский</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-strip"></div>
+
+  <section class="hero">
+    <div class="hero-circle"></div>
+
+    <p class="tagline" data-i18n="heroTagline">사주팔자 · The Four Pillars of Destiny</p>
+
+    <h1>
+      <span data-i18n="heroUnlock">Unlock</span><br>
+      <span class="hero-your" data-i18n="heroYour">Your</span>
+      <span data-i18n="heroFate">Fate</span>
+    </h1>
+
+    <p class="hero-sub" data-i18n="heroSub">
+      Born at a precise moment in time, your destiny is written across eight characters —
+      heaven and earth intertwined. Let us reveal what the cosmos inscribed at the hour of your birth.
+    </p>
+
+    <div class="trigrams">
+      <div class="trigram">
+        <div class="trigram-bar"></div>
+        <div class="trigram-bar broken"></div>
+        <div class="trigram-bar"></div>
+      </div>
+      <div class="trigram">
+        <div class="trigram-bar"></div>
+        <div class="trigram-bar"></div>
+        <div class="trigram-bar broken"></div>
+      </div>
+      <div class="trigram">
+        <div class="trigram-bar broken"></div>
+        <div class="trigram-bar"></div>
+        <div class="trigram-bar broken"></div>
+      </div>
+      <div class="trigram">
+        <div class="trigram-bar"></div>
+        <div class="trigram-bar broken"></div>
+        <div class="trigram-bar broken"></div>
+      </div>
+    </div>
+
+    <div class="divider"><span>☯</span></div>
+
+    <button class="cta-btn" onclick="scrollToForm()">
+      <span data-i18n="ctaBtn">Reveal My Destiny</span>
+    </button>
+  </section>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🔥</div>
+      <h3 data-i18n="feat1Title">Five Elements</h3>
+      <p data-i18n="feat1Desc">Discover the balance of Wood, Fire, Earth, Metal &amp; Water within your chart.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌙</div>
+      <h3 data-i18n="feat2Title">Life Cycles</h3>
+      <p data-i18n="feat2Desc">Understand the ten-year luck pillars that shape each chapter of your life.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3 data-i18n="feat3Title">2026 Fortune</h3>
+      <p data-i18n="feat3Desc">See what the Year of the Horse holds in store specifically for you.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💫</div>
+      <h3 data-i18n="feat4Title">Relationships</h3>
+      <p data-i18n="feat4Desc">Uncover your ideal partner's energy and compatibility through your pillars.</p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <div class="expl-inner">
+      <div class="expl-heading">
+        <p class="tagline-sm" data-i18n="explSubtitle">What is Saju?</p>
+        <h2 data-i18n="explTitle">The Four Pillars of Destiny</h2>
+        <div class="gold-rule"></div>
+      </div>
+
+      <div class="expl-body">
+        <p data-i18n="explP1">Saju (사주), literally meaning "four pillars," is a millennia-old Korean and East Asian system of destiny analysis...</p>
+        <p data-i18n="explP2">Unlike Western astrology, which emphasizes the position of planets, Saju draws from the interplay...</p>
+        <p data-i18n="explP3">A skilled reading reveals far more than personality...</p>
+      </div>
+
+      <div class="expl-pillars">
+        <div class="pillar-card">
+          <div class="pillar-char">年</div>
+          <h4 data-i18n="p1t">Year Pillar</h4>
+          <p data-i18n="p1d">Ancestral energy, early life, and the face you show the world.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-char">月</div>
+          <h4 data-i18n="p2t">Month Pillar</h4>
+          <p data-i18n="p2d">Parents, career path, and the energy of your prime adult years.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-char">日</div>
+          <h4 data-i18n="p3t">Day Pillar</h4>
+          <p data-i18n="p3d">Your core self — the Day Master that governs your entire chart.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-char">時</div>
+          <h4 data-i18n="p4t">Hour Pillar</h4>
+          <p data-i18n="p4d">Inner desires, children, and the energy of your later years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="form-section">
+    <div class="form-header">
+      <h2 data-i18n="formTitle">Enter Your Birth Information</h2>
+      <p data-i18n="formSubtitle">Saju requires the exact date and, ideally, the hour of your birth — the four pillars that form the map of your fate.</p>
+    </div>
+
+    <div class="form-card">
+      <form id="saju-form" onsubmit="handleSubmit(event)" novalidate>
+
+        <div class="field">
+          <label for="field-name" data-i18n="labelName">Name</label>
+          <input type="text" id="field-name" data-i18n-placeholder="placeholderName" placeholder="First and last name" autocomplete="name" />
+          <p class="field-error" id="error-name" data-i18n="errorName">Please enter your name.</p>
+        </div>
+
+        <div class="field">
+          <label for="field-relation" data-i18n="labelRelation">Relationship</label>
+          <div class="relation-wrap">
+            <select id="field-relation">
+              <option value="self" data-i18n="rel_self">Self</option>
+              <option value="spouse" data-i18n="rel_spouse">Spouse</option>
+              <option value="partner" data-i18n="rel_partner">Partner</option>
+              <option value="parent" data-i18n="rel_parent">Parent</option>
+              <option value="child" data-i18n="rel_child">Child</option>
+              <option value="friend" data-i18n="rel_friend">Friend</option>
+              <option value="other" data-i18n="rel_other">Enter directly</option>
+            </select>
+            <input type="text" id="field-relation-custom" data-i18n-placeholder="relCustomPlaceholder" placeholder="Enter relationship" style="display:none;margin-top:8px;" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label data-i18n="labelDob">Date of Birth</label>
+          <div class="dob-row">
+            <input type="number" id="birth-year" data-i18n-placeholder="dobYear" placeholder="YYYY" min="1900" max="2025" inputmode="numeric" />
+            <select id="birth-month">
+              <option value="" disabled selected data-i18n="dobMonth">MM</option>
+              <option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option>
+              <option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option>
+              <option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            </select>
+            <input type="number" id="birth-day" data-i18n-placeholder="dobDay" placeholder="DD" min="1" max="31" inputmode="numeric" />
+          </div>
+          <p class="field-error" id="error-dob" data-i18n="errorDob">Please enter a valid date (YYYY / MM / DD).</p>
+        </div>
+
+        <div class="field">
+          <label for="birth-hour" data-i18n="labelHour">Birth Hour <span class="optional" data-i18n="hourOpt">(optional but recommended)</span></label>
+          <select id="birth-hour">
+            <option value="" data-i18n="hourUnknown">Unknown</option>
+            <option value="23-1">11 PM – 1 AM</option><option value="1-3">1 AM – 3 AM</option><option value="3-5">3 AM – 5 AM</option>
+            <option value="5-7">5 AM – 7 AM</option><option value="7-9">7 AM – 9 AM</option><option value="9-11">9 AM – 11 AM</option>
+            <option value="11-13">11 AM – 1 PM</option><option value="13-15">1 PM – 3 PM</option><option value="15-17">3 PM – 5 PM</option>
+            <option value="17-19">5 PM – 7 PM</option><option value="19-21">7 PM – 9 PM</option><option value="21-23">9 PM – 11 PM</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-i18n="labelGender">Gender</label>
+          <div class="gender-row">
+            <button type="button" class="gender-btn" id="btn-male" data-gender="male" data-i18n="genderMale" onclick="setGender(this)">Male</button>
+            <button type="button" class="gender-btn" id="btn-female" data-gender="female" data-i18n="genderFemale" onclick="setGender(this)">Female</button>
+          </div>
+          <input type="hidden" id="gender-val" value="" />
+          <p class="field-error" id="error-gender" data-i18n="genderError">Please select your gender.</p>
+        </div>
+
+        <div class="submit-wrap">
+          <button type="submit" class="submit-btn" id="submit-btn"><span data-i18n="submitBtn">Unlock My Saju</span></button>
+          <p class="privacy-note" data-i18n="privacyNote">We never store or share your personal information.</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p data-i18n="footer">© 2026 UnlockSaju · Ancient wisdom, modern insight</p>
+  </footer>
+
+  <div id="result">
+    <div class="result-card">
+      <h3 data-i18n="resultTitle">Service Under Maintenance</h3>
+      <p data-i18n="resultBody">We’re currently preparing the reading engine. Please check back soon.</p>
+      <div class="result-badge">
+        <span class="dot"></span>
+        <span data-i18n="resultBadge">Maintenance in progress</span>
+      </div>
+      <button class="result-close" onclick="closeResult()" data-i18n="resultClose">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // =========================
+    // i18n (A-option: language-specific URL + JSON dictionaries)
+    // =========================
+    const PAGE_LANG = 'en';
+    const SUPPORTED_LANGS = ['en','zh','hi','es','fr','ar','pt','ru'];
+    const LANG_PATH = { en:'/en/', zh:'/zh/', hi:'/hi/', es:'/es/', fr:'/fr/', ar:'/ar/', pt:'/pt/', ru:'/ru/' };
+
+    let selectedGender = '';
+
+    function trackEvent(eventName, params = {}) {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', eventName, params);
+    }
+
+    async function loadDict(lang) {
+      const res = await fetch(`/locales/${lang}.json`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Failed to load locale: ${lang}`);
+      return await res.json();
+    }
+
+    function applyDict(lang, t) {
+      if (!t) return;
+
+      document.documentElement.dir  = t.dir || 'ltr';
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      const relKeys = ['self','spouse','partner','parent','child','friend','other'];
+      relKeys.forEach(k => {
+        const opt = document.querySelector(`#field-relation option[value="${k}"]`);
+        if (opt && t[`rel_${k}`]) opt.textContent = t[`rel_${k}`];
+      });
+
+      const monthPlaceholder = document.querySelector('#birth-month option[value=""]');
+      if (monthPlaceholder && t.dobMonth) monthPlaceholder.textContent = t.dobMonth;
+
+      const hourUnknown = document.querySelector('#birth-hour option[value=""]');
+      if (hourUnknown && t.hourUnknown) hourUnknown.textContent = t.hourUnknown;
+
+      const maleBtn = document.getElementById('btn-male');
+      const femaleBtn = document.getElementById('btn-female');
+      if (maleBtn && t.genderMale) maleBtn.textContent = t.genderMale;
+      if (femaleBtn && t.genderFemale) femaleBtn.textContent = t.genderFemale;
+
+      const langLabelEl = document.getElementById('lang-label');
+      if (langLabelEl && t.langLabel) langLabelEl.textContent = t.langLabel;
+    }
+
+    function setActiveLangTile(lang) {
+      document.querySelectorAll('.lang-tile').forEach(tile => tile.classList.remove('active'));
+      const tile = document.querySelector(`.lang-tile[onclick*="'${lang}'"]`);
+      if (tile) tile.classList.add('active');
+    }
+
+    async function initI18n() {
+      try {
+        const dict = await loadDict(PAGE_LANG);
+        applyDict(PAGE_LANG, dict);
+        setActiveLangTile(PAGE_LANG);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function goToLang(lang) {
+      if (!SUPPORTED_LANGS.includes(lang)) lang = 'en';
+      try { localStorage.setItem('lang', lang); } catch (_) {}
+      location.href = LANG_PATH[lang] || '/en/';
+    }
+
+    function toggleLang() {
+      const btn = document.getElementById('lang-btn');
+      const overlay = document.getElementById('lang-overlay');
+      const isOpen = overlay.classList.contains('open');
+      overlay.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
+    }
+
+    function closeLangOnOverlay(e) {
+      if (e.target === document.getElementById('lang-overlay')) toggleLang();
+    }
+
+    function selectLang(tileEl, lang) {
+      document.getElementById('lang-overlay').classList.remove('open');
+      document.getElementById('lang-btn').classList.remove('open');
+      goToLang(lang);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.getElementById('lang-overlay').classList.remove('open');
+        document.getElementById('lang-btn').classList.remove('open');
+        closeResult();
+      }
+    });
+
+    function scrollToForm() {
+      trackEvent('reveal_destiny_click', {
+        event_category: 'engagement',
+        event_label: 'hero_cta'
+      });
+      document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('field-relation').addEventListener('change', function () {
+      const custom = document.getElementById('field-relation-custom');
+      custom.style.display = this.value === 'other' ? 'block' : 'none';
+      if (this.value === 'other') custom.focus();
+    });
+
+    function setGender(btn) {
+      const val = btn.getAttribute('data-gender');
+
+      if (selectedGender === val) {
+        selectedGender = '';
+        document.getElementById('gender-val').value = '';
+        document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+      } else {
+        selectedGender = val;
+        document.getElementById('gender-val').value = val;
+        document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      document.getElementById('error-gender').classList.remove('visible');
+    }
+
+    function validateField(inputEl, errorEl, isValid) {
+      if (isValid) {
+        inputEl.classList.remove('input-error');
+        errorEl.classList.remove('visible');
+      } else {
+        inputEl.classList.add('input-error');
+        errorEl.classList.add('visible');
+        const eventType = inputEl.tagName === 'SELECT' ? 'change' : 'input';
+        inputEl.addEventListener(eventType, () => {
+          inputEl.classList.remove('input-error');
+          errorEl.classList.remove('visible');
+        }, { once: true });
+      }
+      return isValid;
+    }
+
+    // ✅ 숫자 입력 방어: type=number는 maxlength가 안 먹어서 JS로 처리
+    function enforceMaxDigits(inputEl, maxDigits) {
+      const raw = String(inputEl.value || '');
+      const digitsOnly = raw.replace(/\D/g, '');
+      const trimmed = digitsOnly.slice(0, maxDigits);
+      if (raw !== trimmed) inputEl.value = trimmed;
+    }
+
+    // ✅ YYYY: 최대 4자리 제한
+    const yearElLive = document.getElementById('birth-year');
+    yearElLive.addEventListener('input', () => enforceMaxDigits(yearElLive, 4));
+
+    // ✅ DD: 최대 2자리 제한
+    const dayElLive = document.getElementById('birth-day');
+    dayElLive.addEventListener('input', () => enforceMaxDigits(dayElLive, 2));
+
+    function showMaintenanceModal() {
+      document.getElementById('result').classList.add('show');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const nameEl   = document.getElementById('field-name');
+      const yearEl   = document.getElementById('birth-year');
+      const monthEl  = document.getElementById('birth-month');
+      const dayEl    = document.getElementById('birth-day');
+      const errorDob = document.getElementById('error-dob');
+
+      // ✅ 붙여넣기 케이스까지 방어
+      enforceMaxDigits(yearEl, 4);
+      enforceMaxDigits(dayEl, 2);
+
+      const yr = parseInt(yearEl.value, 10);
+      const dy = parseInt(dayEl.value, 10);
+
+      const nameOk  = validateField(nameEl, document.getElementById('error-name'), nameEl.value.trim().length > 0);
+      const yearOk  = !isNaN(yr) && yearEl.value.length === 4 && yr >= 1900 && yr <= 2025;
+      const monthOk = monthEl.value !== '';
+      const dayOk   = !isNaN(dy) && dy >= 1 && dy <= 31;
+      const dobOk   = yearOk && monthOk && dayOk;
+
+      if (dobOk) {
+        [yearEl, monthEl, dayEl].forEach(el => el.classList.remove('input-error'));
+        errorDob.classList.remove('visible');
+      } else {
+        if (!yearOk)  yearEl.classList.add('input-error');
+        if (!monthOk) monthEl.classList.add('input-error');
+        if (!dayOk)   dayEl.classList.add('input-error');
+        errorDob.classList.add('visible');
+        [yearEl, monthEl, dayEl].forEach(el => {
+          const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+          el.addEventListener(evt, () => el.classList.remove('input-error'), { once: true });
+        });
+      }
+
+      let genderOk = true;
+      if (!document.getElementById('gender-val').value) {
+        document.getElementById('error-gender').classList.add('visible');
+        genderOk = false;
+      }
+
+      if (!nameOk || !dobOk || !genderOk) return;
+
+      trackEvent('unlock_submit', {
+        event_category: 'form',
+        event_label: 'saju_form_valid_submit'
+      });
+
+      showMaintenanceModal();
+    }
+
+    function closeResult() {
+      trackEvent('maintenance_close', {
+        event_category: 'modal',
+        event_label: 'maintenance_modal'
+      });
+      document.getElementById('result').classList.remove('show');
+    }
+
+    // init
+    initI18n();
+  </script>
 </body>
 </html>
