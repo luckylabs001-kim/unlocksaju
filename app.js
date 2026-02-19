@@ -15,6 +15,13 @@
       window.gtag('event', eventName, params);
     }
 
+    function trackUnlockSubmitClick() {
+      trackEvent('unlock_submit_click', {
+        event_category: 'form',
+        event_label: 'saju_submit_button'
+      });
+    }
+
     async function loadDict(lang) {
       const res = await fetch(`/locales/${lang}.json`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Failed to load locale: ${lang}`);
@@ -235,6 +242,13 @@
       });
 
       if (!submitPassed) return;
+
+      if (!nameOk || !dobOk || !genderOk) return;
+
+      trackEvent('unlock_submit', {
+        event_category: 'form',
+        event_label: 'saju_form_valid_submit'
+      });
 
       showMaintenanceModal();
     }
