@@ -21,6 +21,15 @@
   <!-- Vercel Analytics (정적 사이트용) -->
   <script defer src="/_vercel/insights/script.js"></script>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ3L9X1PHL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VZ3L9X1PHL');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=IM+Fell+English:ital@0;1&family=Noto+Serif+KR:wght@300;400;600&display=swap"
@@ -831,6 +840,11 @@
 
     let selectedGender = '';
 
+    function trackEvent(eventName, params = {}) {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', eventName, params);
+    }
+
     async function loadDict(lang) {
       const res = await fetch(`/locales/${lang}.json`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Failed to load locale: ${lang}`);
@@ -923,6 +937,10 @@
     });
 
     function scrollToForm() {
+      trackEvent('reveal_destiny_click', {
+        event_category: 'engagement',
+        event_label: 'hero_cta'
+      });
       document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1029,10 +1047,19 @@
 
       if (!nameOk || !dobOk || !genderOk) return;
 
+      trackEvent('unlock_submit', {
+        event_category: 'form',
+        event_label: 'saju_form_valid_submit'
+      });
+
       showMaintenanceModal();
     }
 
     function closeResult() {
+      trackEvent('maintenance_close', {
+        event_category: 'modal',
+        event_label: 'maintenance_modal'
+      });
       document.getElementById('result').classList.remove('show');
     }
 
